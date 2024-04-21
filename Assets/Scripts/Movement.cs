@@ -5,22 +5,31 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     [SerializeField]
-   public float speed = 500f;
+   private float speed = 5f;
     [SerializeField]
-    public float flightSpeed = 1f;
-    Rigidbody2D sila;
+    private float flightSpeed = 10f;
+    Rigidbody2D rigidbody;
     void Start()
     {
-        sila = GetComponent<Rigidbody2D>();
+        rigidbody = GetComponent<Rigidbody2D>();
     }
 
   
     void Update()
     {
-        float movement = Input.GetAxis("Horizontal");
-        transform.position += new Vector3(movement, 0, 0) * speed * Time.deltaTime ;
-        if(Input.GetKey(KeyCode.Space))
-        transform.position += new Vector3(0, 3, 0) * flightSpeed * Time.deltaTime;
+        float moveX = 0;
+        if (Input.GetKey(KeyCode.D)){
+            moveX += 1;
+        }
+        if (Input.GetKey(KeyCode.A)){
+            moveX -= 1;
+        }
 
+        float moveY = 0;
+        if(Input.GetKey(KeyCode.Space)){
+             moveY += 1;
+            }
+
+        rigidbody.velocity = new Vector3(moveX * speed, moveY * flightSpeed,0); 
     }
 }
