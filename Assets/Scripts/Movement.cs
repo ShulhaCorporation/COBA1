@@ -4,32 +4,43 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+
+    private Rigidbody2D rigidbody2D;
+
     [SerializeField]
-   private float speed = 5f;
+    private float speed;
     [SerializeField]
-    private float flightSpeed = 10f;
-    Rigidbody2D rigidbody;
+    private float flightSpeed;
+
+    // Start is called before the first frame update
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+        rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-  
+    // Update is called once per frame
     void Update()
     {
-        float moveX = 0;
-        if (Input.GetKey(KeyCode.D)){
+        //var moveX = Input.GetAxis("Horizontal");
+
+        int moveX = 0;
+        if (Input.GetKey(KeyCode.D))
+        {
             moveX += 1;
         }
-        if (Input.GetKey(KeyCode.A)){
+        if (Input.GetKey(KeyCode.A))
+        {
             moveX -= 1;
         }
 
         float moveY = 0;
-        if(Input.GetKey(KeyCode.Space)){
-             moveY += 1;
-            }
 
-        rigidbody.velocity = new Vector3(moveX * speed, moveY * flightSpeed,0); 
+        if (Input.GetKey(KeyCode.Space))
+        {
+            moveY += 1;
+        }
+
+        rigidbody2D.velocity = new Vector3(moveX*speed, moveY* flightSpeed, 0);
+
     }
 }
