@@ -497,6 +497,7 @@ GameObject:
   - component: {fileID: 1125433627}
   - component: {fileID: 1125433629}
   - component: {fileID: 1125433630}
+  - component: {fileID: 1125433631}
   m_Layer: 0
   m_Name: Owl
   m_TagString: Untagged
@@ -632,6 +633,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3329262, y: 0.3250326}
   m_EdgeRadius: 0.2
+--- !u!114 &1125433631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125433624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c11554cb46229054fb2db025be334c26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  power: 1
+  delay: 100
+  movement: {fileID: 1125433629}
+  energyDraw: {fileID: 545978564}
 --- !u!1 &1148729549
 GameObject:
   m_ObjectHideFlags: 0

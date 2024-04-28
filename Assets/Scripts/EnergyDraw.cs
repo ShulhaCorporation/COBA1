@@ -15,7 +15,7 @@ public class EnergyDraw : MonoBehaviour
     {
         
     }
-    void SetEnergy(float energy)
+    public void SetEnergy(float energy)
     { if (energy >= 0 && energy <= 1)
             transform.localScale = new Vector3(energy, 1, 1);
 

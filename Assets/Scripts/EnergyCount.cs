@@ -8,9 +8,12 @@ public class EnergyCount : MonoBehaviour
    public float power = 1f;
     [SerializeField]
     private int delay = 100;
-    Movement movement = new Movement();
+    
+    [SerializeField]
+    Movement movement;
 
-    EnergyDraw energyDraw = new EnergyDraw();
+    [SerializeField]
+    EnergyDraw energyDraw;
     // Start is called before the first frame update
     void Start()
     {
