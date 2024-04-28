@@ -11,7 +11,7 @@ public class Movement : MonoBehaviour
     private float speed;
     [SerializeField]
     private float flightSpeed;
-
+    private bool canFly = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,12 +35,16 @@ public class Movement : MonoBehaviour
 
         float moveY = 0;
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && canFly)
         {
             moveY += 1;
         }
 
         rigidbody2D.velocity = new Vector3(moveX*speed, moveY* flightSpeed, 0);
 
+    }
+    public void SetCanFly(bool canFly)
+    {
+        this.canFly = canFly;
     }
 }
