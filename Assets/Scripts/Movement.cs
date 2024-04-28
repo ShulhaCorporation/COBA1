@@ -11,10 +11,13 @@ public class Movement : MonoBehaviour
     private float speed;
     [SerializeField]
     private float flightSpeed;
+
+    private PlayerInput playerInput;
     private bool canFly = true;
     // Start is called before the first frame update
     void Start()
     {
+        playerInput =  GetComponent<PlayerInput>(); // для отримання компонентів
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
@@ -24,18 +27,18 @@ public class Movement : MonoBehaviour
         //var moveX = Input.GetAxis("Horizontal");
 
         int moveX = 0;
-        if (Input.GetKey(KeyCode.D))
+        if (playerInput.IsRightPressed)
         {
             moveX += 1;
         }
-        if (Input.GetKey(KeyCode.A))
+        if (playerInput.IsLeftPressed)
         {
             moveX -= 1;
         }
 
         float moveY = 0;
 
-        if (Input.GetKey(KeyCode.Space) && canFly)
+        if (playerInput.IsFlyPressed && canFly)
         {
             moveY += 1;
         }

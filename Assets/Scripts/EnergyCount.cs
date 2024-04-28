@@ -15,20 +15,22 @@ public class EnergyCount : MonoBehaviour
     [SerializeField]
     EnergyDraw energyDraw;
     // Start is called before the first frame update
+
+    private PlayerInput playerInput;
     void Start()
     {
-        
+        playerInput =  GetComponent<PlayerInput>(); // для отримання компонентів
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space) && power > 0)
+        if (playerInput.IsFlyPressed && power > 0)
         {
             Thread.Sleep(delay);
             power -= 0.1f;
         }
-      if(power < 1 && !Input.GetKey(KeyCode.Space))
+      if(power < 1 && !playerInput.IsFlyPressed)
         {
             Thread.Sleep(delay);
             power += 0.1f;
