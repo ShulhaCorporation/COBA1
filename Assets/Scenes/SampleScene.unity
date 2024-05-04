@@ -322,7 +322,6 @@ GameObject:
   - component: {fileID: 401425463}
   - component: {fileID: 401425465}
   - component: {fileID: 401425464}
-  - component: {fileID: 401425467}
   - component: {fileID: 401425466}
   m_Layer: 5
   m_Name: Hp1
@@ -401,19 +400,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74a405562ece2044c9f070bf0add1edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &401425467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 401425462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf8781ca51421544dba2dc3f14167b60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 3
+  lifeSystem: {fileID: 1125433634}
+  count: 1
+  animationSpeed: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,7 +587,6 @@ GameObject:
   - component: {fileID: 844376554}
   - component: {fileID: 844376556}
   - component: {fileID: 844376555}
-  - component: {fileID: 844376558}
   - component: {fileID: 844376557}
   m_Layer: 5
   m_Name: Hp2
@@ -674,22 +662,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 844376553}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf8781ca51421544dba2dc3f14167b60, type: 3}
+  m_Script: {fileID: 11500000, guid: 74a405562ece2044c9f070bf0add1edc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 3
---- !u!114 &844376558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 844376553}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7e9a17951627544ea3f807a64c2653d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  lifeSystem: {fileID: 1125433634}
+  count: 2
+  animationSpeed: 1
 --- !u!1 &972198271
 GameObject:
   m_ObjectHideFlags: 0
@@ -842,6 +820,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1121982869}
   - component: {fileID: 1121982871}
+  - component: {fileID: 1121982872}
   - component: {fileID: 1121982870}
   m_Layer: 5
   m_Name: Hp3
@@ -908,6 +887,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1121982868}
   m_CullTransparentMesh: 1
+--- !u!114 &1121982872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1121982868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74a405562ece2044c9f070bf0add1edc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeSystem: {fileID: 1125433634}
+  count: 3
+  animationSpeed: 1
 --- !u!1 &1125433624
 GameObject:
   m_ObjectHideFlags: 0

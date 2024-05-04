@@ -2,12 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Threading;
-public class Hp2: MonoBehaviour
+public class HpView: MonoBehaviour
 {
     private Vector3 scale;
 
     [SerializeField]
     private LifeSystem lifeSystem;
+
+    [SerializeField]
+    private int count;
+
+    [SerializeField]
+    private float animationSpeed;
+
     void Start()
     {
         
@@ -17,13 +24,9 @@ public class Hp2: MonoBehaviour
     void Update()
     {
         scale = transform.localScale;
-        if(lifeSystem.Hp <2 && scale != new Vector3(0f,0f,1f))
+        if(lifeSystem.Hp < count && scale.x >= 0)
         {
-            Debug.Log("YESTb");
-            for (int i = 0; i < 101; i++) {
-                transform.localScale -= new Vector3(0.01f, 0.01f, 0f);
-                Thread.Sleep(1);
-            }
+           transform.localScale -= new Vector3(1f, 1f, 0f) * animationSpeed * Time.deltaTime;
         }
     }
 }
