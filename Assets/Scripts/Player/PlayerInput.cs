@@ -14,8 +14,12 @@ public class PlayerInput : MonoBehaviour
     [SerializeField]
     private KeyCode flyKey;
 
+    [SerializeField]
+    private KeyCode downKey;
+
     public bool IsRightPressed { get; set; } = false;
     public bool IsLeftPressed { get; set; } = false;
+    public bool IsDownPressed { get; set; } = false;
     public bool IsFlyPressed { get; set; } = false;
 
 
@@ -25,6 +29,7 @@ public class PlayerInput : MonoBehaviour
     {
         IsRightPressed = Input.GetKey(rightKey);
         IsLeftPressed = Input.GetKey(leftKey);
+        IsDownPressed = Input.GetKey(downKey);
         IsFlyPressed = Input.GetKey(flyKey);
     }
 }

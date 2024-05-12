@@ -1,14 +1,13 @@
 using System.Collections;
-using System.Threading;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnergyCount : MonoBehaviour
 {
    public float power = 1f;
-    [SerializeField]
-    private int delay = 100;
     
+    
+
     [SerializeField]
     Movement movement;
 
@@ -27,13 +26,11 @@ public class EnergyCount : MonoBehaviour
     {
         if (playerInput.IsFlyPressed && power > 0)
         {
-            Thread.Sleep(delay);
-            power -= 0.1f;
+            power -= 0.4f * Time.deltaTime;
         }
       if(power < 1 && !playerInput.IsFlyPressed)
         {
-            Thread.Sleep(delay);
-            power += 0.1f;
+            power += 0.1f * Time.deltaTime;
         }
       if(power <= 0)
         {

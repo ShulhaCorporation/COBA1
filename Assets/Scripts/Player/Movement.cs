@@ -42,8 +42,14 @@ public class Movement : MonoBehaviour
         {
             moveY += 1;
         }
-
-        rigidbody2D.velocity = new Vector3(moveX*speed, moveY* flightSpeed, 0);
+       
+        if (playerInput.IsDownPressed) //різке падіння на кнопку s
+        { moveY -= 1;
+            
+        }
+        
+            rigidbody2D.velocity = new Vector3(moveX * speed, moveY * flightSpeed, 0);
+        
 
     }
     public void SetCanFly(bool canFly)
