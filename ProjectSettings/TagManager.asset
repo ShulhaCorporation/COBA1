@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Deadly
+  - EndLevel
   layers:
   - Default
   - TransparentFX
