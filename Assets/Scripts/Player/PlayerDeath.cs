@@ -6,8 +6,11 @@ using UnityEngine.SceneManagement;
 public class PlayerDeath : MonoBehaviour
 {
    private bool isDead = false;
-
-  public void SetIsDead(bool isDead)
+    [SerializeField]
+    private GameObject deathPanel;
+    [SerializeField]
+    private GameObject player;
+    public void SetIsDead(bool isDead)
     {
         this.isDead = isDead;
     }
@@ -16,8 +19,10 @@ public class PlayerDeath : MonoBehaviour
     {
         if(isDead)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             isDead = false;
+           deathPanel.SetActive(true);
+            player.SetActive(false);
         }
     }
+  
 }
