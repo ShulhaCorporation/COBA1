@@ -207,7 +207,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 969888292}
+      - m_Target: {fileID: 969888294}
         m_TargetAssemblyTypeName: SceneTransition, Assembly-CSharp
         m_MethodName: Update
         m_Mode: 1
@@ -305,10 +305,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -656,7 +656,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 969888294}
+      - m_Target: {fileID: 969888292}
         m_TargetAssemblyTypeName: SceneTransition, Assembly-CSharp
         m_MethodName: Update
         m_Mode: 1
@@ -851,8 +851,8 @@ GameObject:
   m_Component:
   - component: {fileID: 969888293}
   - component: {fileID: 969888292}
-  - component: {fileID: 969888291}
   - component: {fileID: 969888294}
+  - component: {fileID: 969888291}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
