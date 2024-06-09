@@ -11,12 +11,14 @@ public class Movement : MonoBehaviour
     private float speed;
     [SerializeField]
     private float flightSpeed;
-
+    [SerializeField]
+    private Animator anim;
     private PlayerInput playerInput;
     private bool canFly = true;
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         playerInput =  GetComponent<PlayerInput>(); // для отримання компонентів
         rigidbody2D = GetComponent<Rigidbody2D>();
     }
@@ -26,7 +28,7 @@ public class Movement : MonoBehaviour
     {
         //var moveX = Input.GetAxis("Horizontal");
 
-        int moveX = 0;
+        float moveX = 0;
         if (playerInput.IsRightPressed)
         {
             moveX += 1;
@@ -45,9 +47,9 @@ public class Movement : MonoBehaviour
        
         if (playerInput.IsDownPressed) //різке падіння на кнопку s
         { moveY -= 1;
-            
+                
         }
-        
+            anim.SetFloat("moveX" , moveX);
             rigidbody2D.velocity = new Vector3(moveX * speed, moveY * flightSpeed, 0);
         
 
