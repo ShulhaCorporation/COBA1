@@ -10,8 +10,11 @@ public class TouchSpike : MonoBehaviour
 
     [SerializeField]
     private float knockback;
+
+    private Animator anim;
     void Start()
     {
+        anim = GetComponent<Animator>();
         lifeset = gameObject.GetComponent<LifeSystem>();
         rigidbody = gameObject.GetComponent<Rigidbody2D>();
     }
@@ -25,6 +28,9 @@ public class TouchSpike : MonoBehaviour
             Vector3 differance = otherTransform.position - transform.position;
             rigidbody.AddForce(differance * knockback);
             
+            anim.SetTrigger("TouchSpike");
         }
     }
+
+    
 }

@@ -49,10 +49,14 @@ public class Movement : MonoBehaviour
         { moveY -= 1;
                 
         }
-            anim.SetFloat("moveX" , moveX);
-            rigidbody2D.velocity = new Vector3(moveX * speed, moveY * flightSpeed, 0);
-        
 
+        anim.SetFloat("moveX" , moveX);
+        if (moveX != 0 ) anim.SetFloat("lastX" , moveX);
+        anim.SetFloat("moveY" , moveY);
+        
+        rigidbody2D.velocity = new Vector3(moveX * speed, moveY * flightSpeed, 0);
+        
+        
     }
     public void SetCanFly(bool canFly)
     {

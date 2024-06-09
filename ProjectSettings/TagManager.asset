@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Deadly
   - EndLevel
+  - Ground
   layers:
   - Default
   - TransparentFX
