@@ -10528,6 +10528,10 @@ PrefabInstance:
       propertyPath: energyDraw
       value: 
       objectReference: {fileID: 886498831}
+    - target: {fileID: 1257818160334056024, guid: d08ffa1f40ac883488288dfc6e8d5922, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1257818159362539739}
     - target: {fileID: 1257818160334056102, guid: d08ffa1f40ac883488288dfc6e8d5922, type: 3}
       propertyPath: player
       value: 
@@ -10539,6 +10543,18 @@ PrefabInstance:
     - target: {fileID: 6866024541806265016, guid: d08ffa1f40ac883488288dfc6e8d5922, type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866024541806265016, guid: d08ffa1f40ac883488288dfc6e8d5922, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866024541806265016, guid: d08ffa1f40ac883488288dfc6e8d5922, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6866024541806265016, guid: d08ffa1f40ac883488288dfc6e8d5922, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6866024541806265016, guid: d08ffa1f40ac883488288dfc6e8d5922, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10600,6 +10616,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ggPanel: {fileID: 1436202212}
+--- !u!95 &1257818159362539739
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257818159362539737}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 59c42f5b252bc474283e4ce92a929a3b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &7776733437304934441
 PrefabInstance:
   m_ObjectHideFlags: 0
