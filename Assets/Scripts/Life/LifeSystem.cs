@@ -19,17 +19,12 @@ public class LifeSystem : MonoBehaviour
         playerDeath = GetComponent<PlayerDeath>();
     }
 
-    void Update()
-    {
-        if (hp <= 0)
-        {
-            playerDeath.SetIsDead(true);
-            hp = 3;
-        }
-    }
     public void AddHp(int increment)
     { 
         hp += increment;
-        Debug.Log(hp);
+        if (hp <= 0)
+        {
+            playerDeath.SetIsDead(true);
+        }
     }
 }
