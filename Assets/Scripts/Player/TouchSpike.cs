@@ -27,7 +27,7 @@ public class TouchSpike : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D collision)
     {
-        if(state != BatState.Immortal && collision.gameObject.tag == "Deadly")
+        if(collision.gameObject.tag == "Deadly")
         {
             HandleCollision(collision);
         }
@@ -35,15 +35,18 @@ public class TouchSpike : MonoBehaviour
 
     private void HandleCollision(Collision2D collision)
     {
-        lifeset.AddHp(-1);
+        if(state != BatState.Immortal)
+        {
+            lifeset.AddHp(-1);
+            anim.SetTrigger("TouchSpike");
+            StartCoroutine(TriggerImmortal(2));
+        }
         Transform otherTransform = collision.transform;
 
         Vector3 differance = otherTransform.position - transform.position;
         rigidbody.AddForce(differance * knockback);
 
-        anim.SetTrigger("TouchSpike");
-
-        StartCoroutine(TriggerImmortal(4));
+        
     }
 
     IEnumerator TriggerImmortal(float delay)
