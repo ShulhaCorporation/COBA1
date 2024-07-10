@@ -11,10 +11,12 @@ public class GroundDetector : MonoBehaviour
    
     private const string GroundTag = "Ground";
 
-    void OnTriggernEnter2D(Collider2D collision){
+    void OnTriggerEnter2D(Collider2D collision){
+     
         if(collision.gameObject.tag == GroundTag)
         {
             OnGroundDetected.Invoke();
+            
         }
     }
 }
