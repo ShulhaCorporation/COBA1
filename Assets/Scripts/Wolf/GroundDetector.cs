@@ -8,10 +8,10 @@ public class GroundDetector : MonoBehaviour
 
     public event Action OnGroundDetected;
 
-    [SerializeField]
+   
     private const string GroundTag = "Ground";
 
-    void OnCollisionEnter2D(Collision2D collision){
+    void OnTriggernEnter2D(Collider2D collision){
         if(collision.gameObject.tag == GroundTag)
         {
             OnGroundDetected.Invoke();

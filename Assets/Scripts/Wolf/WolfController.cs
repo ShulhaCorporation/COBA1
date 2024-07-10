@@ -11,13 +11,20 @@ public class WolfController : MonoBehaviour
     private PlayerDetector Pdetector;
     [SerializeField]
     private float speed;
-
+    [SerializeField]
+    private float jumpSpeed;
+    private Vector3 direction;
     private Rigidbody2D rigidbody2D;
-
+    private GameObject player;
     void Start(){
         rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
         detector.OnGroundDetected += OnGroundDetected;
         Pdetector.OnplayerDetected += OnplayerDetected;
+        player = GameObject.FindWithTag("Player");
+    }
+    void Update()
+    {
+        rigidbody2D.velocity = new Vector3(speed * Time.deltaTime, 0, 0);
     }
 
     private void OnGroundDetected()
@@ -25,7 +32,9 @@ public class WolfController : MonoBehaviour
         FlipSide();
     }
     private void OnplayerDetected(){
-        Debug.Log("Bebra");
+        direction = player.transform.position - transform.position;
+        direction = direction.normalized;
+        rigidbody2D.AddForce(direction * jumpSpeed);
     }
 
     private void FlipSide()
@@ -33,9 +42,5 @@ public class WolfController : MonoBehaviour
         transform.Rotate(180,0,0);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        rigidbody2D.velocity = transform.up * speed;
-    }
+ 
 }
