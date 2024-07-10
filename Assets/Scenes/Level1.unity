@@ -5561,7 +5561,7 @@ Rigidbody2D:
   m_Mass: 2
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.6
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -5651,7 +5651,7 @@ MonoBehaviour:
   detector: {fileID: 1497327588}
   Pdetector: {fileID: 1145803700}
   speed: 4
-  jumpSpeed: 30400
+  jumpSpeed: 6
   player: {fileID: 1257818159362539737}
 --- !u!1 &1774886147
 GameObject:

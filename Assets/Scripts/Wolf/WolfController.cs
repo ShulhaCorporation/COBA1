@@ -3,6 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum WolfState{
+    Normal,
+    Immortal
+}
+
 public class WolfController : MonoBehaviour
 {
     [SerializeField]
@@ -17,6 +22,8 @@ public class WolfController : MonoBehaviour
     private Rigidbody2D rigidbody2D;
     [SerializeField]
     private GameObject player;
+    private bool isJumping = false;
+
     void Start(){
         rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
         detector.OnGroundDetected += OnGroundDetected;
@@ -25,7 +32,9 @@ public class WolfController : MonoBehaviour
     }
     void Update()
     {
-        rigidbody2D.velocity = transform.right * speed ;
+        Vector3 movement = transform.right * speed;
+        if (isJumping) movement = movement + direction * jumpSpeed;
+        rigidbody2D.velocity = movement ;
     }
 
     private void OnGroundDetected()
@@ -36,14 +45,21 @@ public class WolfController : MonoBehaviour
         
         direction = player.transform.position - transform.position;
         direction = direction.normalized;
-        rigidbody2D.AddForce(direction * jumpSpeed, ForceMode2D.Impulse);
-        Debug.Log(direction);
+        StartCoroutine(Jump(0.5f));
+
     }
 
     private void FlipSide()
     {
         transform.Rotate(0,180,0);
       
+    }
+
+    IEnumerator Jump(float delay)
+    {
+        isJumping = true;
+        yield return new WaitForSeconds(delay);
+        isJumping = false;
     }
 
  
