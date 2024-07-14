@@ -23,7 +23,7 @@ public class WolfController : MonoBehaviour
     [SerializeField]
     private GameObject player;
     private bool isJumping = false;
-
+    private bool canJump = false;
     void Start(){
         rigidbody2D = gameObject.GetComponent<Rigidbody2D>();
         detector.OnGroundDetected += OnGroundDetected;
@@ -33,7 +33,7 @@ public class WolfController : MonoBehaviour
     void Update()
     {
         Vector3 movement = transform.right * speed;
-        if (isJumping) movement = movement + direction * jumpSpeed;
+        if (isJumping && canJump) movement = movement + direction * jumpSpeed;
         rigidbody2D.velocity = movement ;
     }
 
@@ -60,7 +60,20 @@ public class WolfController : MonoBehaviour
         isJumping = true;
         yield return new WaitForSeconds(delay);
         isJumping = false;
+        canJump = false;
     }
-
- 
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if(col.gameObject.tag == "Ground")
+        {
+            canJump = true;
+        }
+    }
+  //   void OnCollisionExit2D(Collision2D lision)
+    //{
+      // if(lision.gameObject.tag == "Ground")
+        //{
+          //  canJump = false;
+       // }
+    //}
 }
