@@ -15,7 +15,7 @@ public class GroundDetector : MonoBehaviour
      
         if(collision.gameObject.tag == GroundTag)
         {
-            OnGroundDetected.Invoke();
+            OnGroundDetected?.Invoke();
             
         }
     }

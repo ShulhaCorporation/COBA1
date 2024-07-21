@@ -4055,6 +4055,7 @@ GameObject:
   - component: {fileID: 1145803699}
   - component: {fileID: 1145803701}
   - component: {fileID: 1145803700}
+  - component: {fileID: 1145803702}
   m_Layer: 0
   m_Name: RadiusAttack
   m_TagString: Untagged
@@ -4096,7 +4097,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1145803698}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -4105,6 +4106,31 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.7
+--- !u!68 &1145803702
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1145803698}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.35138583, y: -0.34181106}
+  - {x: 0.9130124, y: 2.4731934}
+  - {x: 2.8646886, y: 1.8615596}
+  - {x: 3.8024888, y: -0.44199795}
+  - {x: -0.40003222, y: -0.39320993}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &1169575242
 GameObject:
   m_ObjectHideFlags: 0
@@ -5268,8 +5294,8 @@ GameObject:
   - component: {fileID: 1696410832}
   - component: {fileID: 1696410831}
   - component: {fileID: 1696410830}
-  - component: {fileID: 1696410829}
   - component: {fileID: 1696410833}
+  - component: {fileID: 1696410834}
   m_Layer: 0
   m_Name: wolf
   m_TagString: Deadly
@@ -5277,32 +5303,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!61 &1696410829
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1696410828}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
 --- !u!50 &1696410830
 Rigidbody2D:
   serializedVersion: 4
@@ -5410,6 +5410,22 @@ MonoBehaviour:
   speed: 4
   jumpSpeed: 6
   player: {fileID: 1257818159362539737}
+--- !u!58 &1696410834
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696410828}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &1774886147
 GameObject:
   m_ObjectHideFlags: 0
