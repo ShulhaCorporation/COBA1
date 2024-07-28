@@ -5,6 +5,10 @@ using UnityEngine;
 public class BoulderDestroy : MonoBehaviour
 {
     private Animator anim;
+    [SerializeField]
+    private GameObject particlesPrefab;
+
+    
   
     void Start()
     {
@@ -23,6 +27,8 @@ public class BoulderDestroy : MonoBehaviour
     IEnumerator Remove(float delay)
     { 
         yield return new WaitForSeconds(delay);
+        Instantiate(particlesPrefab,transform.position, Quaternion.identity);
         Destroy(gameObject);
+        
     }
 }

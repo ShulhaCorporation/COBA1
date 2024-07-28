@@ -4,8 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Restart : MonoBehaviour
 {
+    [SerializeField]
+    private CheckpointController checkpointController;
+
     public void Reload()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        checkpointController.Respawn();
     }
 }
