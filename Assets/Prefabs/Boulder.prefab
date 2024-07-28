@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7195110795954239696}
   - component: {fileID: 49140994739465408}
   - component: {fileID: 6877239595497649299}
+  - component: {fileID: -7753593453523595176}
+  - component: {fileID: 5372246973775600189}
   m_Layer: 0
   m_Name: Boulder
   m_TagString: InstantKill
@@ -123,3 +125,36 @@ CircleCollider2D:
   m_Offset: {x: 0.12, y: 0.06}
   serializedVersion: 2
   m_Radius: 0.27
+--- !u!95 &-7753593453523595176
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9020161187291976338}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 56b0b3af4ef669f409e5a301df4ce9e9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5372246973775600189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9020161187291976338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b058205b86e43274d8e20f230e98413c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

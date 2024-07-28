@@ -3661,7 +3661,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -63.000366, y: 38}
+  m_AnchoredPosition: {x: -63.00049, y: 38}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1085906322
@@ -5233,6 +5233,7 @@ GameObject:
   - component: {fileID: 1696410833}
   - component: {fileID: 1696410834}
   - component: {fileID: 1696410835}
+  - component: {fileID: 1696410836}
   m_Layer: 0
   m_Name: wolf
   m_TagString: Deadly
@@ -5255,7 +5256,7 @@ Rigidbody2D:
   m_Mass: 2
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 7
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -5373,7 +5374,7 @@ Animator:
   m_GameObject: {fileID: 1696410828}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d6fbdd13093cb4e45a8c65189d080771, type: 2}
+  m_Controller: {fileID: 9100000, guid: f4c95d18b7fb81a479669d131fb80229, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -5384,6 +5385,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1696410836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696410828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b9586d3492ed11489037c7aa1ac9776, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1774886147
 GameObject:
   m_ObjectHideFlags: 0
