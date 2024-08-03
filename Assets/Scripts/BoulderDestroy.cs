@@ -7,9 +7,8 @@ public class BoulderDestroy : MonoBehaviour
     private Animator anim;
     [SerializeField]
     private GameObject particlesPrefab;
-
-    
-  
+    [SerializeField]
+    private float offset; 
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
@@ -27,7 +26,7 @@ public class BoulderDestroy : MonoBehaviour
     IEnumerator Remove(float delay)
     { 
         yield return new WaitForSeconds(delay);
-        Instantiate(particlesPrefab,transform.position, Quaternion.identity);
+        Instantiate(particlesPrefab,new Vector3(transform.position.x, transform.position.y + offset, transform.position.z), Quaternion.identity);
         Destroy(gameObject);
         
     }
