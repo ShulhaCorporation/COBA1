@@ -7,13 +7,14 @@ public class BoulderDestroy : MonoBehaviour
     private Animator anim;
     [SerializeField]
     private GameObject particlesPrefab;
+
     [SerializeField]
     private float offset; 
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
     }
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Destroy")
         {
@@ -27,6 +28,7 @@ public class BoulderDestroy : MonoBehaviour
     { 
         yield return new WaitForSeconds(delay);
         Instantiate(particlesPrefab,new Vector3(transform.position.x, transform.position.y + offset, transform.position.z), Quaternion.identity);
+        //particlesPoint.Play();
         Destroy(gameObject);
         
     }

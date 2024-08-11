@@ -2263,6 +2263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86f04a74ad6299540a83f6a5fdb06b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  checkpointController: {fileID: 0}
 --- !u!4 &549995975
 Transform:
   m_ObjectHideFlags: 0
@@ -11155,6 +11156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0db19010972721f45b701a897d1ee47a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelID: 1
   ggPanel: {fileID: 1436202212}
 --- !u!95 &1257818159362539739
 Animator:

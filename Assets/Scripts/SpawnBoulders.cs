@@ -10,6 +10,8 @@ public class SpawnBoulders : MonoBehaviour
     private float min;
     [SerializeField]
     private float max;
+    [SerializeField]
+    private ParticleSystem particleSystem;
     void Start()
     {
         StartCoroutine(Spawn(min, max));
@@ -19,6 +21,8 @@ public class SpawnBoulders : MonoBehaviour
         while (true) {
             yield return new WaitForSeconds(Random.Range(min, max));
             Instantiate(boulder, transform.position, Quaternion.identity);
+           // BoulderDestroy boulderDestroy = boulder.GetComponent<BoulderDestroy>();
+            //boulderDestroy.particlesPoint = particleSystem;
         }
     }
 }
