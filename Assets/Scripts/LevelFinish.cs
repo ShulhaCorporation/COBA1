@@ -8,6 +8,7 @@ public class LevelFinish : MonoBehaviour
     private int levelID;
     [SerializeField]
     private GameObject ggPanel;
+
 void OnCollisionEnter2D(Collision2D touch)
     {
         if(touch.gameObject.tag == "EndLevel")
@@ -18,6 +19,7 @@ void OnCollisionEnter2D(Collision2D touch)
             int maxLevel = PlayerPrefs.GetInt("maxLevel");
             Debug.Log(maxLevel);
             if (levelID>maxLevel){
+                
                 PlayerPrefs.SetInt("maxLevel", levelID);
                 PlayerPrefs.Save();
             }

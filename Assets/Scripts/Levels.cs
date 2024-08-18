@@ -9,8 +9,6 @@ public class Levels : MonoBehaviour
 
     void Start()
     {
-        PlayerPrefs.DeleteAll();
-
         buttons = gameObject.GetComponentsInChildren<Button>();
 
         int maxLevel = PlayerPrefs.GetInt("maxLevel");
