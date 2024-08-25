@@ -16,29 +16,29 @@ public class SaveSystem: MonoBehaviour
             instance = this;
 
 
-            dataPath = Application.persistentDataPath +"/"+ fileName;
+            dataPath = Application.persistentDataPath +"/"+ fileName; 
+            // отримання шляху до файлу збереження, незалежно від ос
             Debug.Log(dataPath);
 
             Load();
-            DontDestroyOnLoad(instance);
+            DontDestroyOnLoad(instance); // робота на всіх сценах
         }
     }
 
     public void Save(){
         
-        string json = JsonUtility.ToJson(gameData);
+        string json = JsonUtility.ToJson(gameData); // створює json з публічних змінних аргументу
         Debug.Log(json);
-        System.IO.File.WriteAllText(dataPath, json);
+        File.WriteAllText(dataPath, json); 
+        // приймає шлях до файлу, та контент файлу. записує контент до файлу за шляхом
     }
 
     public void Load(){
-
         string json = File.ReadAllText(dataPath);
+        // читає контент файлу за шляхом
+
         Debug.Log(json);
-        gameData = JsonUtility.FromJson<GameProgressData>(json);
+        JsonUtility.FromJsonOverwrite(json,gameData);
+        // створює новий об'єкт з json формату певного типу
     }
-
-
-
-    
 }

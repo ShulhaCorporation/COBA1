@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[CreateAssetMenu, Serializable]
+[CreateAssetMenu] // дозволяє створювати об'єкт в юніті едітор
 public class GameProgressData: ScriptableObject
 {
     public int MaxLevel;
