@@ -11,7 +11,11 @@ public class Levels : MonoBehaviour
     {
         buttons = gameObject.GetComponentsInChildren<Button>();
 
-        int maxLevel = PlayerPrefs.GetInt("maxLevel");
+        int maxLevel = SaveSystem.instance.gameData.MaxLevel;
+
+        Debug.Log(SaveSystem.instance.gameData.MaxLevel);
+
+         SaveSystem.instance.Save();
 
         for (int i = 0; i < buttons.Length; i++)
         {

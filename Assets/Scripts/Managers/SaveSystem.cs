@@ -5,7 +5,7 @@ public class SaveSystem: MonoBehaviour
 {
     public static SaveSystem instance;
     [SerializeField]
-    private GameProgressData gameData;
+    public GameProgressData gameData;
     [SerializeField]
     private string fileName;
 
@@ -21,6 +21,7 @@ public class SaveSystem: MonoBehaviour
             Debug.Log(dataPath);
 
             Load();
+            
             DontDestroyOnLoad(instance); // робота на всіх сценах
         }
     }
@@ -28,7 +29,7 @@ public class SaveSystem: MonoBehaviour
     public void Save(){
         
         string json = JsonUtility.ToJson(gameData); // створює json з публічних змінних аргументу
-        Debug.Log(json);
+        
         File.WriteAllText(dataPath, json); 
         // приймає шлях до файлу, та контент файлу. записує контент до файлу за шляхом
     }
@@ -38,6 +39,7 @@ public class SaveSystem: MonoBehaviour
         // читає контент файлу за шляхом
 
         Debug.Log(json);
+
         JsonUtility.FromJsonOverwrite(json,gameData);
         // створює новий об'єкт з json формату певного типу
     }
