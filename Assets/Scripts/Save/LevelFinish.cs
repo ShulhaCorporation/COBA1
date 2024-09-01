@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelFinish : MonoBehaviour
 {
     [SerializeField]
-    private int levelID;
+    private int levelId;
     [SerializeField]
     private GameObject ggPanel;
 void OnCollisionEnter2D(Collision2D touch)
@@ -14,16 +14,12 @@ void OnCollisionEnter2D(Collision2D touch)
         {
             Time.timeScale = 0f;
             ggPanel.SetActive(true);
-
-            int maxLevel = PlayerPrefs.GetInt("maxLevel");
-            Debug.Log(maxLevel);
-            if (levelID>maxLevel){
-                PlayerPrefs.SetInt("maxLevel", levelID);
-                PlayerPrefs.Save();
+  
+            if (levelId>SaveSystem.instance.gameData.levelId){
+                SaveSystem.instance.gameData.levelId = levelId;
+               SaveSystem.instance.Save();
             }
-            
-            
-            
+          
         }
     }
 }
