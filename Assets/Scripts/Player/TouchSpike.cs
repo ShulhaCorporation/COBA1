@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -15,6 +16,9 @@ public class TouchSpike : MonoBehaviour
     private BatState state = BatState.Normal;
     [SerializeField]
     private float knockback;
+
+    [SerializeField]
+    private AudioClip onTouchClip;
 
     private Animator anim;
     void Start()
@@ -37,6 +41,7 @@ public class TouchSpike : MonoBehaviour
     {
         if(state != BatState.Immortal)
         {
+            AudioSystem.instance.PlayEffect(onTouchClip);
             lifeset.AddHp(-1);
             anim.SetTrigger("TouchSpike");
             StartCoroutine(TriggerImmortal(2));

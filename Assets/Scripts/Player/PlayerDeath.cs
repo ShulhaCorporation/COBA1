@@ -10,6 +10,7 @@ public class PlayerDeath : MonoBehaviour
     private GameObject deathPanel;
     [SerializeField]
     private GameObject player;
+
     public void SetIsDead(bool isDead)
     {
         this.isDead = isDead;
@@ -22,6 +23,7 @@ public class PlayerDeath : MonoBehaviour
             isDead = false;
            deathPanel.SetActive(true);
             player.SetActive(false);
+            
         }
     }
   

@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   knockback: -1000
+  onTouchClip: {fileID: 8300000, guid: 08b81845947cfaf45b025a571e09d347, type: 3}
 --- !u!114 &1257818160334056102
 MonoBehaviour:
   m_ObjectHideFlags: 0
