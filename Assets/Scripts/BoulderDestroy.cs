@@ -24,6 +24,7 @@ public class BoulderDestroy : MonoBehaviour
             
         }
     }
+
     IEnumerator Remove(float delay)
     { 
         yield return new WaitForSeconds(delay);
