@@ -485,6 +485,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 490300107}
+  - {fileID: 681278968}
   - {fileID: 1803121381}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -716,7 +717,6 @@ GameObject:
   - component: {fileID: 681278971}
   - component: {fileID: 681278970}
   - component: {fileID: 681278969}
-  - component: {fileID: 681278972}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -737,12 +737,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1145162382}
-  m_Father: {fileID: 1803121381}
-  m_RootOrder: 3
+  m_Father: {fileID: 283466529}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 4, y: -3}
+  m_AnchoredPosition: {x: 381.17346, y: -246.26343}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &681278969
@@ -839,26 +839,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681278967}
   m_CullTransparentMesh: 1
---- !u!114 &681278972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 681278967}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 306cc8c2b49d7114eaa3623786fc2126, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreLayout: 1
-  m_MinWidth: -1
-  m_MinHeight: -1
-  m_PreferredWidth: -1
-  m_PreferredHeight: -1
-  m_FlexibleWidth: -1
-  m_FlexibleHeight: -1
-  m_LayoutPriority: 1
 --- !u!1 &850994820
 GameObject:
   m_ObjectHideFlags: 0
@@ -1591,9 +1571,8 @@ RectTransform:
   - {fileID: 141038520}
   - {fileID: 458615399}
   - {fileID: 80038478}
-  - {fileID: 681278968}
   m_Father: {fileID: 283466529}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

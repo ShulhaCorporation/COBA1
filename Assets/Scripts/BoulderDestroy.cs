@@ -9,7 +9,9 @@ public class BoulderDestroy : MonoBehaviour
     private GameObject particlesPrefab;
 
     [SerializeField]
-    private float offset; 
+    private float offset;
+    [SerializeField]
+    private float delay;
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
@@ -20,7 +22,7 @@ public class BoulderDestroy : MonoBehaviour
         {
           
             anim.SetTrigger("Destroy");
-            StartCoroutine(Remove(1.0f));
+            StartCoroutine(Remove(delay));
             
         }
     }

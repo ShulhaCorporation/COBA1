@@ -14,9 +14,11 @@ public class CheckpointController : MonoBehaviour
     private GameObject deathScreen;
     private LifeSystem lifesystem;
     private Vector3 currentSpawnPoint;
+    private EnergyCount energyCount;
     private int currentId = 0;
     void Start(){
         lifesystem = player.GetComponent<LifeSystem>();
+        energyCount = player.GetComponent<EnergyCount>();
         var checkpoints = gameObject.GetComponentsInChildren<Checkpoint>();
         foreach (var checkpoint in checkpoints){
             checkpoint.OnCheckpointEntered+=OnCheckpointEntered;
@@ -37,6 +39,7 @@ public class CheckpointController : MonoBehaviour
     public void Respawn(){
         playerTransform.position = currentSpawnPoint;
         lifesystem.AddHp(3);
+        energyCount.power = 1f;
         player.SetActive(true);
         deathScreen.SetActive(false);
     }

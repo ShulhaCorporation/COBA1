@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7753593453523595176}
   - component: {fileID: 5372246973775600189}
   m_Layer: 0
-  m_Name: Boulder
+  m_Name: BoulderInstant
   m_TagString: InstantKill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,7 +103,7 @@ Rigidbody2D:
   m_Mass: 1000
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.7
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -160,4 +160,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particlesPrefab: {fileID: 7251628392440071365, guid: 016b31751637a6742b38de46315d97b3, type: 3}
   offset: 0.7
-  delay: 1
+  delay: 0
