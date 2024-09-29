@@ -41,7 +41,7 @@ public class TouchSpike : MonoBehaviour
     {
         if(state != BatState.Immortal)
         {
-            AudioSystem.instance.PlayEffect(onTouchClip);
+           // AudioSystem.instance.PlayEffect(onTouchClip);
             lifeset.AddHp(-1);
             anim.SetTrigger("TouchSpike");
             StartCoroutine(TriggerImmortal(2));

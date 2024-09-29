@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4191298918543785229}
   - component: {fileID: 5012128906633266620}
   - component: {fileID: 7250415202798180185}
+  - component: {fileID: 1918472822275277770}
   - component: {fileID: 2601747724084845395}
   - component: {fileID: 1171789888760438524}
   m_Layer: 0
@@ -113,6 +114,18 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &1918472822275277770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438231882442481704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc3d48ec1025f64399d4f2666ecbc3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &2601747724084845395
 Rigidbody2D:
   serializedVersion: 4
@@ -146,5 +159,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 597646e5629500f42bb266feff892f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiType: 0
-  distance: 10
+  points: []
+  speed: 0
