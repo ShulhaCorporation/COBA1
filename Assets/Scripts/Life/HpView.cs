@@ -29,4 +29,8 @@ public class HpView: MonoBehaviour
            transform.localScale -= new Vector3(1f, 1f, 0f) * animationSpeed * Time.deltaTime;
         }
     }
+   public void Reset()
+    {
+        transform.localScale = new Vector3(1f, 1f, 1f);
+    }
 }

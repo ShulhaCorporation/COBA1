@@ -12,6 +12,8 @@ public class CheckpointController : MonoBehaviour
     private GameObject player;
     [SerializeField]
     private GameObject deathScreen;
+    [SerializeField]
+    private List<GameObject> hearts;
     private LifeSystem lifesystem;
     private Vector3 currentSpawnPoint;
     private EnergyCount energyCount;
@@ -23,6 +25,7 @@ public class CheckpointController : MonoBehaviour
         foreach (var checkpoint in checkpoints){
             checkpoint.OnCheckpointEntered+=OnCheckpointEntered;
         }
+        
     }
 
     private void OnCheckpointEntered(Vector3 position, int id)
@@ -37,10 +40,15 @@ public class CheckpointController : MonoBehaviour
     }
 
     public void Respawn(){
+        player.SetActive(true);
+        deathScreen.SetActive(false);
         playerTransform.position = currentSpawnPoint;
         lifesystem.AddHp(3);
         energyCount.power = 1f;
-        player.SetActive(true);
-        deathScreen.SetActive(false);
+        foreach (var heart in hearts)
+        {
+            HpView hpView = heart.GetComponent<HpView>();
+            hpView.Reset();
+        }
     }
 }

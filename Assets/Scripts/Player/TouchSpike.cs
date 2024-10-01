@@ -48,8 +48,12 @@ public class TouchSpike : MonoBehaviour
         }
         Transform otherTransform = collision.transform;
 
-        Vector3 differance = otherTransform.position - transform.position;
-        rigidbody.AddForce(differance * knockback);
+        Vector3 difference = otherTransform.position - transform.position;
+        if(difference.magnitude < 5) //при з≥ткненн≥ з tilemap в≥дбуваЇтьс€ дуже сильна в≥ддача, бо transform далеко в≥д гравц€. ц€ перев≥рка в≥дс≥юЇ великий knockback
+        {
+            rigidbody.AddForce(difference * knockback);
+        }
+       
 
         
     }
