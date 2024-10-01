@@ -8,6 +8,8 @@ public class ZoomTrigger : MonoBehaviour
     private float scale;
     [SerializeField]
     private GameObject camera;
+    [SerializeField]
+    private float speed;
     private CameraZoom cameraZoom;
     void Start()
     {
@@ -17,7 +19,7 @@ public class ZoomTrigger : MonoBehaviour
     {
         if (collider2D.tag == "Player")
         {
-            cameraZoom.ScaleCamera(scale);
+            cameraZoom.ScaleCamera(scale, speed);
         }
     }
 }
