@@ -7,15 +7,24 @@ public class LanguagePreset : ScriptableObject {
     public string CurrentLanguage;
 
     public Dictionary<string, string> English = new Dictionary<string, string>(){
-        {"mainMenu", "Main Menu"}
+        {"mainMenu", "Extreme Owl's Travel" },
+        {"start", "Play" },
+        {"settings", "Settings" },
+        {"continue", "Continue" },
+        {"exit", "Exit" },
+        {"levelComplete", "Level complete!" },
+        {"death", "You died!" },
+        {"tryAgain", "Try again" },
     };
 
-    public Dictionary<string, string> Ukraian = new Dictionary<string, string>(){
-        {"mainMenu", "Головне меню"},
-        {"", ""},
-        {"", ""},
-        {"", ""},
-        {"", ""},
-        {"", ""},
+    public Dictionary<string, string> Ukrainian = new Dictionary<string, string>(){
+        {"mainMenu", "Екстремальний політ"},
+        {"start", "Почати гру"},
+        {"settings", "Налаштування"},
+        {"continue", "Продовжити"},
+        {"exit", "Вийти"},
+        {"levelComplete", "Рівень завершено!"},
+        {"death", "Поразка!"},
+        {"tryAgain", "Спробувати знову"},
     };
 }
