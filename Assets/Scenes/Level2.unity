@@ -536,7 +536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scale: 10
   camera: {fileID: 519420028}
-  speed: 0.01
+  speed: 1
 --- !u!61 &73311216
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11603,7 +11603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scale: 4.5
   camera: {fileID: 519420028}
-  speed: 0.01
+  speed: 1
 --- !u!61 &1277971960
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25930,7 +25930,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scale: 4.5
   camera: {fileID: 519420028}
-  speed: 0.01
+  speed: 1
 --- !u!61 &2117941446
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26013,11 +26013,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6866024541806265016, guid: d08ffa1f40ac883488288dfc6e8d5922, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 59.6
+      value: 36.79
       objectReference: {fileID: 0}
     - target: {fileID: 6866024541806265016, guid: d08ffa1f40ac883488288dfc6e8d5922, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 54.7
+      value: 34.85
       objectReference: {fileID: 0}
     - target: {fileID: 6866024541806265016, guid: d08ffa1f40ac883488288dfc6e8d5922, type: 3}
       propertyPath: m_LocalPosition.z

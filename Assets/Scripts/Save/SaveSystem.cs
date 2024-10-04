@@ -27,8 +27,12 @@ public class SaveSystem : MonoBehaviour
     }
 
    public void Save()
-        {
+    {
+        Debug.Log("Saving started to " + instance.filePath);
+        
         string json = JsonUtility.ToJson(gameData, true);
+
+        Debug.Log("json is " + json);
         File.WriteAllText(instance.filePath, json);
     }
        
@@ -37,7 +41,7 @@ public class SaveSystem : MonoBehaviour
     public void Load()
     {   if(instance == null)
         {
-      
+            
         }
         if (File.Exists(instance.filePath))
         {

@@ -39,23 +39,25 @@ public class TouchSpike : MonoBehaviour
 
     private void HandleCollision(Collision2D collision)
     {
-        if(state != BatState.Immortal)
+        if (state != BatState.Immortal)
         {
-           // AudioSystem.instance.PlayEffect(onTouchClip);
+            // AudioSystem.instance.PlayEffect(onTouchClip);
             lifeset.AddHp(-1);
             anim.SetTrigger("TouchSpike");
             StartCoroutine(TriggerImmortal(2));
         }
+
+        HandleKnockback(collision);
+
+    }
+
+    private void HandleKnockback(Collision2D collision)
+    {
         Transform otherTransform = collision.transform;
 
-        Vector3 difference = otherTransform.position - transform.position;
-        if(difference.magnitude < 5) //при з≥ткненн≥ з tilemap в≥дбуваЇтьс€ дуже сильна в≥ддача, бо transform далеко в≥д гравц€. ц€ перев≥рка в≥дс≥юЇ великий knockback
-        {
-            rigidbody.AddForce(difference * knockback);
-        }
-       
-
+        Vector3 difference = (otherTransform.position - transform.position).normalized;
         
+        rigidbody.AddForce(difference * knockback);
     }
 
     IEnumerator TriggerImmortal(float delay)

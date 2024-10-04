@@ -4,5 +4,7 @@ using UnityEngine;
 public class GameData : ScriptableObject
 {
     public int levelId;
+
+    public string languageId;
     
 }

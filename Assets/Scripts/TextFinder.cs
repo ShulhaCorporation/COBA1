@@ -12,7 +12,7 @@ public class TextFinder : MonoBehaviour
     void Start()
     {
         message = gameObject.GetComponent<TextMeshProUGUI>();
-        switch (languageBase.CurrentLanguage)
+        switch (SaveSystem.instance.gameData.languageId)
         {
             case "en":
                 message.SetText(languageBase.English[key]);
