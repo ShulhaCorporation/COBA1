@@ -7,7 +7,7 @@ public class Hint : MonoBehaviour
 {
     [SerializeField]
     private TextMeshPro textMesh;
-    public float opacity = 0;
+    public byte opacity = 0;
 
     private Coroutine routine;
     
@@ -27,24 +27,24 @@ public class Hint : MonoBehaviour
     }
 
     IEnumerator ShowRoutine(){
-        while(opacity < 256)
+        while(opacity < 255)
         {
-            Color color = textMesh.color;
+            Color32 color = textMesh.color;
             color.a = opacity;
-            textMesh.faceColor = color;
+            textMesh.color = color;
             opacity++;
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.01f);
         }
     }
 
     IEnumerator HideRoutine(){
         while(opacity > 0)
         {
-            Color color = textMesh.color;
+            Color32 color = textMesh.color;
             color.a = opacity;
             textMesh.color = color;
             opacity--;
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.01f);
         }
     }
     
