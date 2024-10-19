@@ -15,6 +15,7 @@ public class LanguagePreset : ScriptableObject {
         {"levelComplete", "Level complete!" },
         {"death", "You died!" },
         {"tryAgain", "Try again" },
+        {"thisLanguage", "English" },
     };
 
     public Dictionary<string, string> Ukrainian = new Dictionary<string, string>(){
@@ -26,5 +27,6 @@ public class LanguagePreset : ScriptableObject {
         {"levelComplete", "Рівень завершено!"},
         {"death", "Поразка!"},
         {"tryAgain", "Спробувати знову"},
+        {"thisLanguage", "Українська"}
     };
 }

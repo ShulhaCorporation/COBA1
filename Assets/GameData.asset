@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61568b0a4d6c7d642b7e97d46c325a96, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
-  levelId: 1
+  levelId: 2
   languageId: en
+  musicVolume: 0.4

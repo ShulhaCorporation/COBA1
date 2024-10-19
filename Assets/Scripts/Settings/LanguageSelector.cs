@@ -1,11 +1,10 @@
 using System;
 using UnityEngine;
-
 public class LanguageSelector : MonoBehaviour {
+
+    public static event Action OnLanguageChanged;
     
-    
-    
-    public void SetLanguage(int id){
+    public static void SetLanguage(int id){
         string langCode = "en";
 
         switch (id)
@@ -23,5 +22,8 @@ public class LanguageSelector : MonoBehaviour {
 
         SaveSystem.instance.gameData.languageId = langCode;
         SaveSystem.instance.Save();
+
+        OnLanguageChanged?.Invoke();
+       
     }
 }
