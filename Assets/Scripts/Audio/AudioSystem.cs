@@ -30,7 +30,15 @@ public class AudioSystem : MonoBehaviour
     public float GetMusicVolume(){
         return musicSource.volume;
     }
+    public void SetSFXVolume(float volume)
+    {
+        fxSource.volume = volume;
+    }
 
+    public float GetSFXVolume()
+    {
+        return fxSource.volume;
+    }
     public void PlayMusic(AudioClip clip){
         musicSource.clip = clip; //зміна кліпу, тобто попередній звук припиняється
         musicSource.Play();
