@@ -4,16 +4,18 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public enum BatState{
+public enum OwlState{
     Normal,
     Immortal
 }
 
+
 public class TouchSpike : MonoBehaviour
-{
+{   private bool isOnSpike;
+    private Vector3 difference;
     private LifeSystem lifeset;
     private Rigidbody2D rigidbody;
-    private BatState state = BatState.Normal;
+    private OwlState state = OwlState.Normal;
     [SerializeField]
     private float knockback;
 
@@ -33,21 +35,30 @@ public class TouchSpike : MonoBehaviour
     {
         if(collision.gameObject.tag == "Deadly")
         {
+            isOnSpike = true;
             HandleCollision(collision);
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Deadly")
+        {
+            isOnSpike = false;
         }
     }
 
     private void HandleCollision(Collision2D collision)
     {
-        if (state != BatState.Immortal)
+        if (state != OwlState.Immortal)
         {
             // AudioSystem.instance.PlayEffect(onTouchClip);
             lifeset.AddHp(-1);
             anim.SetTrigger("TouchSpike");
             StartCoroutine(TriggerImmortal(2));
+            HandleKnockback(collision);
         }
+       
 
-        HandleKnockback(collision);
 
     }
 
@@ -55,16 +66,19 @@ public class TouchSpike : MonoBehaviour
     {
         Transform otherTransform = collision.transform;
 
-        Vector3 difference = (otherTransform.position - transform.position).normalized;
-        
-        rigidbody.AddForce(difference * knockback);
+        difference = (otherTransform.position - transform.position).normalized;
+            rigidbody.AddForce(difference * knockback);
     }
 
     IEnumerator TriggerImmortal(float delay)
     {
-        state = BatState.Immortal;
+        state = OwlState.Immortal;
         yield return new WaitForSeconds(delay);
-        state = BatState.Normal;
+        if (isOnSpike)
+        {
+            rigidbody.AddForce(difference * knockback);
+        }
+        state = OwlState.Normal;
     }
 
     

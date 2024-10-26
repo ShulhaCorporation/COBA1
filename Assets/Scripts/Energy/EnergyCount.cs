@@ -30,7 +30,7 @@ public class EnergyCount : MonoBehaviour
         }
       if(power < 1 && !playerInput.IsFlyPressed)
         {
-            power += 0.1f * Time.deltaTime;
+            power += 0.07f * Time.deltaTime;
         }
       if(power <= 0)
         {
