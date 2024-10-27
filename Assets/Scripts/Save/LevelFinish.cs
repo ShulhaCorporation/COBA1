@@ -17,7 +17,7 @@ void OnCollisionEnter2D(Collision2D touch)
   
             if (levelId>SaveSystem.instance.gameData.levelId){
                 SaveSystem.instance.gameData.levelId = levelId;
-               SaveSystem.instance.Save();
+                SaveSystem.instance.Save();
             }
           
         }
