@@ -23,6 +23,10 @@ public class TouchSpike : MonoBehaviour
     private AudioClip onTouchClip;
 
     private Animator anim;
+    public void SetState(OwlState stateIndex)
+    {
+        state = stateIndex;
+    }
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -47,6 +51,22 @@ public class TouchSpike : MonoBehaviour
         }
     }
 
+    void OnTriggerStay2D(Collider2D collider) //для обробки рідких перешкод (гейзери)
+    {
+        if (collider.gameObject.tag == "Deadly")
+        {
+            isOnSpike = true;
+            HandleCollision(collider);
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.gameObject.tag == "Deadly")
+        {
+            isOnSpike = false;
+        }
+    }
+
     private void HandleCollision(Collision2D collision)
     {
         if (state != OwlState.Immortal)
@@ -57,14 +77,29 @@ public class TouchSpike : MonoBehaviour
             StartCoroutine(TriggerImmortal(2));
             HandleKnockback(collision);
         }
-       
-
-
-    }
+      }
+    private void HandleCollision(Collider2D collider) //перегрузка для рідких тіл
+    {
+        if (state != OwlState.Immortal)
+        {
+            // AudioSystem.instance.PlayEffect(onTouchClip);
+            lifeset.AddHp(-1);
+            anim.SetTrigger("TouchSpike");
+            StartCoroutine(TriggerImmortal(2));
+            HandleKnockback(collider);
+        }
+      }
 
     private void HandleKnockback(Collision2D collision)
     {
         Transform otherTransform = collision.transform;
+
+        difference = (otherTransform.position - transform.position).normalized;
+            rigidbody.AddForce(difference * knockback);
+    }
+    private void HandleKnockback(Collider2D collider) //перегрузка для рідких тіл
+    {
+        Transform otherTransform = collider.transform;
 
         difference = (otherTransform.position - transform.position).normalized;
             rigidbody.AddForce(difference * knockback);

@@ -207,7 +207,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 969888291}
+      - m_Target: {fileID: 969888295}
         m_TargetAssemblyTypeName: SceneTransition, Assembly-CSharp
         m_MethodName: Update
         m_Mode: 1
@@ -1121,6 +1121,7 @@ GameObject:
   - component: {fileID: 969888292}
   - component: {fileID: 969888294}
   - component: {fileID: 969888291}
+  - component: {fileID: 969888295}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -1140,7 +1141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c7edf5fd48bc6542936676ee1d37616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneId: 3
+  sceneId: 4
 --- !u!114 &969888292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1181,7 +1182,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c7edf5fd48bc6542936676ee1d37616, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneId: 2
+  sceneId: 3
+--- !u!114 &969888295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 969888290}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c7edf5fd48bc6542936676ee1d37616, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneId: 5
 --- !u!1 &1145162381
 GameObject:
   m_ObjectHideFlags: 0

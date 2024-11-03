@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class InstantKill : MonoBehaviour
 {
-    private PlayerDeath death;
+    private LifeSystem death;
     void Start()
     {
-        death = gameObject.GetComponent<PlayerDeath>();
+        death = gameObject.GetComponent<LifeSystem>();
     }
 void OnCollisionEnter2D(Collision2D collision2D)
     {  if (collision2D.gameObject.tag == "InstantKill")
         {
-            death.SetIsDead(true);
+            death.AddHp(-3);
         }
     }
 }

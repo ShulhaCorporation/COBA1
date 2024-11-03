@@ -15,12 +15,14 @@ public class CheckpointController : MonoBehaviour
     [SerializeField]
     private List<GameObject> hearts;
     private LifeSystem lifesystem;
+    private TouchSpike touchSpike;
     private Vector3 currentSpawnPoint;
     private EnergyCount energyCount;
     private int currentId = 0;
     void Start(){
         lifesystem = player.GetComponent<LifeSystem>();
         energyCount = player.GetComponent<EnergyCount>();
+        touchSpike = player.GetComponent<TouchSpike>();
         var checkpoints = gameObject.GetComponentsInChildren<Checkpoint>();
         foreach (var checkpoint in checkpoints){
             checkpoint.OnCheckpointEntered+=OnCheckpointEntered;
@@ -50,5 +52,6 @@ public class CheckpointController : MonoBehaviour
             HpView hpView = heart.GetComponent<HpView>();
             hpView.Reset();
         }
+        touchSpike.SetState(OwlState.Normal);
     }
 }

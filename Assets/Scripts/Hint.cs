@@ -6,7 +6,9 @@ using UnityEngine;
 public class Hint : MonoBehaviour
 {
     [SerializeField]
-    private TextMeshPro textMesh;
+    private TMP_Text textMesh;
+    [SerializeField]
+    private float delay;
     public byte opacity = 0;
 
     private Coroutine routine;
@@ -33,7 +35,7 @@ public class Hint : MonoBehaviour
             color.a = opacity;
             textMesh.color = color;
             opacity++;
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(delay);
         }
     }
 
@@ -44,7 +46,7 @@ public class Hint : MonoBehaviour
             color.a = opacity;
             textMesh.color = color;
             opacity--;
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(delay);
         }
     }
     
