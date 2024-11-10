@@ -10,17 +10,20 @@ public class Geyser : MonoBehaviour
     private float inactiveTime;
     [SerializeField]
     private GameObject steam;
+    [SerializeField]
+    private GeyserParticles geyserParticles;
     void Start()
     {
        StartCoroutine(Shooting());
     }
-    private IEnumerator Shooting()
+    public IEnumerator Shooting()
     {
         while (true)
-        {
+        {   geyserParticles.StopParticles();
             steam.SetActive(false);
             yield return new WaitForSeconds(inactiveTime);
             steam.SetActive(true);
+            geyserParticles.PlayParticles();
             yield return new WaitForSeconds(activeTime);
         }
     }

@@ -15,6 +15,8 @@ public class Movement : MonoBehaviour
     private Animator anim;
     private PlayerInput playerInput;
     private bool canFly = true;
+    private bool isFallingFast = false;
+    private bool isSlowdown = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,15 +49,30 @@ public class Movement : MonoBehaviour
        
         if (playerInput.IsDownPressed) //різке падіння на кнопку s
         { moveY -= 1;
-                
+             isFallingFast = true;
+            //тут буде анімація різкого падіння
         }
-
+        if (!isFallingFast && rigidbody2D.velocity.normalized.y < 0 && !isSlowdown)
+        {
+            anim.SetTrigger("Slowdown");
+            isSlowdown = true;
+        }
+        if(isFallingFast || rigidbody2D.velocity.normalized.y >= 0)
+        {
+            isSlowdown = false;
+            anim.SetTrigger("StopFalling");
+        }
         anim.SetFloat("moveX" , moveX);
-        if (moveX != 0 ) anim.SetFloat("lastX" , moveX);
+        if (moveX != 0)
+        {
+            anim.SetFloat("lastX" , moveX);
+        }
+        
+       
         anim.SetFloat("moveY" , moveY);
         
         rigidbody2D.velocity = new Vector3(moveX * speed, moveY * flightSpeed, 0);
-        
+        isFallingFast = false;
         
     }
     public void SetCanFly(bool canFly)
