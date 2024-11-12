@@ -11,17 +11,19 @@ public class GeyserParticles : MonoBehaviour
     {   
         particleSystem = particles.GetComponent<ParticleSystem>();
         
-
+       
     }
 
  
    public void PlayParticles()
     {
+        particles.SetActive(true);
         Debug.Log(particleSystem.isPlaying);
         particleSystem.Play();
     }
     public void StopParticles()
     {
+        particles.SetActive(true);
         Debug.Log(particleSystem.isPlaying);
         particleSystem.Stop();
     }

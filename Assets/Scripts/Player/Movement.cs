@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 public class Movement : MonoBehaviour
@@ -26,7 +27,7 @@ public class Movement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //var moveX = Input.GetAxis("Horizontal");
 
@@ -46,29 +47,37 @@ public class Movement : MonoBehaviour
         {
             moveY += 1;
         }
-       
+        
         if (playerInput.IsDownPressed) //різке падіння на кнопку s
         { moveY -= 1;
-             isFallingFast = true;
-            //тут буде анімація різкого падіння
+            if (rigidbody2D.velocity.y < -0.1)
+            {
+                isFallingFast = true;
+                anim.SetBool("FastDown", true);
+            }
         }
-        if (!isFallingFast && rigidbody2D.velocity.normalized.y < 0 && !isSlowdown)
+       
+        if (!isFallingFast && rigidbody2D.velocity.y < 0.1 && !isSlowdown)
         {
-            anim.SetTrigger("Slowdown");
+            anim.SetBool("SlowDown", true);
             isSlowdown = true;
         }
-        if(isFallingFast || rigidbody2D.velocity.normalized.y >= 0)
+        if(isFallingFast  || rigidbody2D.velocity.y >= 0)
         {
             isSlowdown = false;
-            anim.SetTrigger("StopFalling");
+            anim.SetBool("SlowDown", false);
+           
         }
         anim.SetFloat("moveX" , moveX);
         if (moveX != 0)
         {
             anim.SetFloat("lastX" , moveX);
         }
-        
-       
+
+        if (!isFallingFast)
+        {
+            anim.SetBool("FastDown", false );
+        }
         anim.SetFloat("moveY" , moveY);
         
         rigidbody2D.velocity = new Vector3(moveX * speed, moveY * flightSpeed, 0);
