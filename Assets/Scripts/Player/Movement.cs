@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.UIElements;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 public class Movement : MonoBehaviour
 {
@@ -56,13 +57,13 @@ public class Movement : MonoBehaviour
                 anim.SetBool("FastDown", true);
             }
         }
-       
-        if (!isFallingFast && rigidbody2D.velocity.y < 0.1 && !isSlowdown)
+         
+        if (!isFallingFast && rigidbody2D.velocity.y < -0.7 && !isSlowdown)
         {
             anim.SetBool("SlowDown", true);
             isSlowdown = true;
         }
-        if(isFallingFast  || rigidbody2D.velocity.y >= 0)
+        if(isFallingFast  || rigidbody2D.velocity.y >= -0.7)
         {
             isSlowdown = false;
             anim.SetBool("SlowDown", false);

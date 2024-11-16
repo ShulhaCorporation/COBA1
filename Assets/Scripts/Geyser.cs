@@ -8,13 +8,16 @@ public class Geyser : MonoBehaviour
     private float activeTime;
     [SerializeField]
     private float inactiveTime;
+    [SerializeField] 
+    private float setupDelay;
     [SerializeField]
     private GameObject steam;
     [SerializeField]
     private GeyserParticles geyserParticles;
     void Start()
     {
-       StartCoroutine(Shooting());
+        StartCoroutine(SetupDelay());
+     
     }
     public IEnumerator Shooting()
     {
@@ -27,4 +30,10 @@ public class Geyser : MonoBehaviour
             yield return new WaitForSeconds(activeTime);
         }
     }
+    public IEnumerator SetupDelay()
+    {
+        yield return new WaitForSeconds(setupDelay);
+        StartCoroutine(Shooting());
+    }
+   
 }

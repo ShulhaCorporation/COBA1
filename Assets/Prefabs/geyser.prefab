@@ -42,7 +42,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.08459276, y: 1.1916795}
@@ -161,6 +161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   activeTime: 1
   inactiveTime: 3
+  setupDelay: 0
   steam: {fileID: 4286812717031651519}
   geyserParticles: {fileID: 3458125410560762146}
 --- !u!114 &3458125410560762146
@@ -176,6 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   particles: {fileID: 7687229091087202856}
+  geyserController: {fileID: 0}
 --- !u!60 &12017665013180382
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -273,6 +275,14 @@ PrefabInstance:
     - target: {fileID: 5377972140429179387, guid: 63013894828bd4b4082e96317baae043, type: 3}
       propertyPath: m_Name
       value: SteamParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 8152666165664374525, guid: 63013894828bd4b4082e96317baae043, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8152666165664374525, guid: 63013894828bd4b4082e96317baae043, type: 3}
+      propertyPath: InitialModule.startLifetime.minMaxState
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63013894828bd4b4082e96317baae043, type: 3}
