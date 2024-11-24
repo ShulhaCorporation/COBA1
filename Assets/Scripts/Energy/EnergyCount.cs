@@ -42,4 +42,16 @@ public class EnergyCount : MonoBehaviour
         }
         energyDraw.SetEnergy(power);
     }
+    public void AddPower(float increment)
+    {
+        
+        if (power + increment > 1)
+        {
+            power = 1f;
+        }
+        else
+        {
+            power += increment;
+        }
+    }
 }
