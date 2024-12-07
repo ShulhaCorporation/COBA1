@@ -19,7 +19,8 @@ public class LanguagePreset : ScriptableObject {
         {"tutor1", "Hold A and D to move, \n space to fly" },
         {"tutor2", "You have limited energy to fly \n Restore it before hard obstacles" },
          {"tutor3", "This is a checkpoint \n You will be respawned with full hp if you die after it" },
-        {"tutor4", "Press S to fly down fast" }
+        {"tutor4", "Press S to fly down fast" },
+        {"tutor5", "You need to blow up the blockage \n Find the detonator" }
     };
 
     public Dictionary<string, string> Ukrainian = new Dictionary<string, string>(){
@@ -35,6 +36,7 @@ public class LanguagePreset : ScriptableObject {
          {"tutor1", "Клавіші A, D - рух вліво-вправо \n Пробіл - політ"},
           {"tutor2", "У вас є шкала енергії, що витрачається на політ \n Відновлюйте енергію перед складними перешкодами" },
            {"tutor3", "Ви дійшли до точки збереження \n Ви відродитесь тут після смерті з повним здоров'ям" },
-        {"tutor4", "Натисніть S для швидкого ривка вниз" }
+        {"tutor4", "Натисніть S для швидкого ривка вниз" },
+         {"tutor5", "Треба розчистити обвал \n Десь має бути детонатор" }
     };
     }

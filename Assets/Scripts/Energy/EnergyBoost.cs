@@ -17,9 +17,9 @@ public class EnergyBoost : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("TRIGGERED");
+           
             energyCount.AddPower(power);
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

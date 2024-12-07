@@ -14,6 +14,8 @@ public class CheckpointController : MonoBehaviour
     private GameObject deathScreen;
     [SerializeField]
     private List<GameObject> hearts;
+    [SerializeField]
+    private List<GameObject> energyBoosters;
     private LifeSystem lifesystem;
     private TouchSpike touchSpike;
     private Vector3 currentSpawnPoint;
@@ -51,6 +53,13 @@ public class CheckpointController : MonoBehaviour
         {
             HpView hpView = heart.GetComponent<HpView>();
             hpView.Reset();
+        }
+        if (energyBoosters != null)
+        {
+            foreach (var booster in energyBoosters)
+            {
+                booster.SetActive(true);
+            }
         }
         touchSpike.SetState(OwlState.Normal);
     }
