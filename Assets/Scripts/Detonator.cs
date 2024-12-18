@@ -8,6 +8,12 @@ public class Detonator : MonoBehaviour
     private GameObject blockage;
     [SerializeField]
     private GameObject blackScreen;
+    [SerializeField]
+    private CameraFollow cameraFollow;
+    [SerializeField]
+    private GameObject cameraCenter;
+    [SerializeField]
+    private List<GameObject> particles;
     private Blindfold blindfold;
     private bool wasActivated = false;
     void Start()
@@ -21,19 +27,32 @@ public class Detonator : MonoBehaviour
         {
             animator.SetTrigger("Activate");
             StartCoroutine(CutScene());
-            Destroy(blockage);
+          
             
             wasActivated = true;
         }
     }
     IEnumerator CutScene()
     {
-        Debug.Log("1");
+      
         yield return new WaitForSeconds(0.550f);
-        Debug.Log("2");
+       
         blindfold.Enable(true);
+        yield return new WaitForSeconds(1.5f);
+        cameraFollow.SetObject(cameraCenter.transform); 
+         blindfold.Enable(false);
         yield return new WaitForSeconds(1.2f);
-        Debug.Log("3");
+        foreach (GameObject particle in particles)
+        {
+            particle.SetActive(true);
+        }
+        yield return new WaitForSeconds(0.4f);
+        Destroy(blockage);
+        yield return new WaitForSeconds(3f);
+        blindfold.Enable(true);
+        yield return new WaitForSeconds(1.5f);
+        cameraFollow.ResetCamera();
         blindfold.Enable(false);
+
     }
 }

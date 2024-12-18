@@ -19,6 +19,7 @@ public class Movement : MonoBehaviour
     private bool canFly = true;
     private bool isFallingFast = false;
     private bool isSlowdown = false;
+    private bool isDashing = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,64 +32,70 @@ public class Movement : MonoBehaviour
     void FixedUpdate()
     {
         //var moveX = Input.GetAxis("Horizontal");
-
-        float moveX = 0;
-        if (playerInput.IsRightPressed)
+        if (!isDashing)
         {
-            moveX += 1;
-        }
-        if (playerInput.IsLeftPressed)
-        {
-            moveX -= 1;
-        }
-
-        float moveY = 0;
-
-        if (playerInput.IsFlyPressed && canFly)
-        {
-            moveY += 1;
-        }
-        
-        if (playerInput.IsDownPressed) //різке падіння на кнопку s
-        { moveY -= 1;
-            if (rigidbody2D.velocity.y < -0.1)
+            float moveX = 0;
+            if (playerInput.IsRightPressed)
             {
-                isFallingFast = true;
-                anim.SetBool("FastDown", true);
+                moveX += 1;
             }
-        }
-         
-        if (!isFallingFast && rigidbody2D.velocity.y < -0.7 && !isSlowdown)
-        {
-            anim.SetBool("SlowDown", true);
-            isSlowdown = true;
-        }
-        if(isFallingFast  || rigidbody2D.velocity.y >= -0.7)
-        {
-            isSlowdown = false;
-            anim.SetBool("SlowDown", false);
-           
-        }
-        anim.SetFloat("moveX" , moveX);
-        if (moveX != 0)
-        {
-            anim.SetFloat("lastX" , moveX);
-        }
+            if (playerInput.IsLeftPressed)
+            {
+                moveX -= 1;
+            }
 
-        if (!isFallingFast)
-        {
-            anim.SetBool("FastDown", false );
+            float moveY = 0;
+
+            if (playerInput.IsFlyPressed && canFly)
+            {
+                moveY += 1;
+            }
+
+            if (playerInput.IsDownPressed) //різке падіння на кнопку s
+            {
+                moveY -= 1;
+                if (rigidbody2D.velocity.y < -0.1)
+                {
+                    isFallingFast = true;
+                    anim.SetBool("FastDown", true);
+                }
+            }
+
+            if (!isFallingFast && rigidbody2D.velocity.y < -0.7 && !isSlowdown)
+            {
+                anim.SetBool("SlowDown", true);
+                isSlowdown = true;
+            }
+            if (isFallingFast || rigidbody2D.velocity.y >= -0.7)
+            {
+                isSlowdown = false;
+                anim.SetBool("SlowDown", false);
+
+            }
+            anim.SetFloat("moveX", moveX);
+            if (moveX != 0)
+            {
+                anim.SetFloat("lastX", moveX);
+            }
+
+            if (!isFallingFast)
+            {
+                anim.SetBool("FastDown", false);
+            }
+            anim.SetFloat("moveY", moveY);
+
+            rigidbody2D.velocity = new Vector3(moveX * speed, moveY * flightSpeed, 0);
+            isFallingFast = false;
         }
-        anim.SetFloat("moveY" , moveY);
-        
-        rigidbody2D.velocity = new Vector3(moveX * speed, moveY * flightSpeed, 0);
-        isFallingFast = false;
-        
     }
     public void SetCanFly(bool canFly)
     {
         this.canFly = canFly;
     }
 
+    public void EnableDashing(bool enableDashing)
+    {
+        isDashing = enableDashing;
+    }
 
 }

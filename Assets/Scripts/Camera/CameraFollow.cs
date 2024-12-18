@@ -13,15 +13,27 @@ public class CameraFollow : MonoBehaviour
     [SerializeField]
     private CurrentLevel currentLevel;
     [SerializeField]
+    private Transform objectiv;
+    [SerializeField]
     private Transform player;
-
+    public void SetObject(Transform transform)
+    {
+        objectiv = transform;
+    }
+    void Start()
+    {
+        objectiv = player;   
+    }
+    public void ResetCamera() { 
+        objectiv = player;
+    }
     void Update()
     {    if (currentLevel == CurrentLevel.Horizontal)
         {
-            this.transform.position = new Vector3(player.position.x, transform.position.y, transform.position.z);
+            this.transform.position = new Vector3(objectiv.position.x, transform.position.y, transform.position.z);
         }else if (currentLevel == CurrentLevel.Vertical)
         {
-            this.transform.position = new Vector3(player.position.x, player.position.y, transform.position.z);
+            this.transform.position = new Vector3(objectiv.position.x, objectiv.position.y, transform.position.z);
         }
     }
 }

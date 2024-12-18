@@ -28,7 +28,7 @@ public class Blindfold : MonoBehaviour
             {
                 currentColor.a = (byte)i;
                 blindfold.color = currentColor;
-                Debug.Log(blindfold.color.a);
+         
                 yield return new WaitForSeconds(delay);
             }
         }
@@ -37,7 +37,7 @@ public class Blindfold : MonoBehaviour
             {
                 currentColor.a = (byte)i;
                 blindfold.color = currentColor;
-                Debug.Log(blindfold.color.a);
+         
                 yield return new WaitForSeconds(delay);
             } 
         }

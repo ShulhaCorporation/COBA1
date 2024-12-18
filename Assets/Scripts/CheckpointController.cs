@@ -47,7 +47,7 @@ public class CheckpointController : MonoBehaviour
         player.SetActive(true);
         deathScreen.SetActive(false);
         playerTransform.position = currentSpawnPoint;
-        lifesystem.AddHp(3);
+        lifesystem.SetHp(3);
         energyCount.power = 1f;
         foreach (var heart in hearts)
         {

@@ -15,7 +15,7 @@ public class BatAngry : MonoBehaviour
     [SerializeField]
     private GameObject player;
     private Vector3 playerPosition;
-    private int currentState = 0;
+    private State currentState = State.Wait;
     [SerializeField]
     private float viewDistance;
     [SerializeField]
@@ -31,13 +31,13 @@ public class BatAngry : MonoBehaviour
     private Vector3 distanceToPlayer;
     private Rigidbody2D rigidbody;
     private Coroutine attack;
-    
+    private bool dontAttack = false;
     void Start()
     {
         rigidbody = GetComponent<Rigidbody2D>();
         
     }
-    void OnCollisionEnter2D(Collision2D collision)
+  /*  void OnCollisionEnter2D(Collision2D collision)
     {   
         if (attack != null && collision.gameObject.CompareTag("Player"))
         {
@@ -47,16 +47,16 @@ public class BatAngry : MonoBehaviour
             //анімація очікування
             StartCoroutine(AfterCollision(afterAttackTime));
         }
-    }
+    }*/
 
     void Update()
     {
-            if (currentState == (int)State.Wait)
+            if (currentState == State.Wait)
             {
               
                 Trace();
             }
-            else
+            else if(!dontAttack)
             {
               
                 Attack();
@@ -68,15 +68,16 @@ public class BatAngry : MonoBehaviour
         distanceToPlayer = playerPosition - transform.position;
         if (distanceToPlayer.magnitude <= viewDistance)
         {
-            currentState = (int)State.Attack;
+            Debug.Log("detected");
+            currentState = State.Attack;
         }
        
     }
     private void Attack()
-    {  
+    {    dontAttack = true;
         //тут буде анімація перед атакою
         attack = StartCoroutine(AttackProcess(prepareTime,afterAttackTime,attackDuration));
-        currentState = (int)State.Wait;
+    
        
     }
     IEnumerator AttackProcess(float prepareTime, float afterAttackTime, float attackDuration)
@@ -85,10 +86,15 @@ public class BatAngry : MonoBehaviour
 
         //анімація атаки
         rigidbody.velocity = distanceToPlayer.normalized * speed;
+        Debug.Log("attack");
         yield return new WaitForSeconds(attackDuration);
         rigidbody.velocity = Vector3.zero;
+        Debug.Log("stop");
         //анімація очікування
         yield return new WaitForSeconds(afterAttackTime);
+        Debug.Log("tracing");
+        dontAttack = false;
+        currentState = State.Wait;
     }
     IEnumerator AfterCollision (float afterAttackTime)
     {

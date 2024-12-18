@@ -29,4 +29,8 @@ public class LifeSystem : MonoBehaviour
             playerDeath.SetIsDead(true);
         }
     }
+    public void SetHp(int value)
+    {
+        hp = value;
+    }
 }

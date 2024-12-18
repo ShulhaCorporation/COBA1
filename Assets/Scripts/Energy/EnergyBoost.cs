@@ -8,6 +8,8 @@ public class EnergyBoost : MonoBehaviour
     private float power;
     [SerializeField]
     private GameObject player;
+    [SerializeField]
+    private ParticleSystem particles;
     private EnergyCount energyCount;
     private void Start()
     {
@@ -19,6 +21,7 @@ public class EnergyBoost : MonoBehaviour
         {
            
             energyCount.AddPower(power);
+            particles.Play();
             gameObject.SetActive(false);
         }
     }
