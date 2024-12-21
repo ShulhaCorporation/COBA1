@@ -16,6 +16,8 @@ public class CheckpointController : MonoBehaviour
     private List<GameObject> hearts;
     [SerializeField]
     private List<GameObject> energyBoosters;
+    [SerializeField]
+    private TriggerBreakable triggerBreakable;
     private LifeSystem lifesystem;
     private TouchSpike touchSpike;
     private Vector3 currentSpawnPoint;
@@ -61,6 +63,7 @@ public class CheckpointController : MonoBehaviour
                 booster.SetActive(true);
             }
         }
+        triggerBreakable.ResetIsUsed();
         touchSpike.SetState(OwlState.Normal);
     }
 }
