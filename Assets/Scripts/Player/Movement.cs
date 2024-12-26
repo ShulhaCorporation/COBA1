@@ -20,6 +20,7 @@ public class Movement : MonoBehaviour
     private bool isFallingFast = false;
     private bool isSlowdown = false;
     private bool isDashing = false;
+    private bool cutsceneMode = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +44,10 @@ public class Movement : MonoBehaviour
             {
                 moveX -= 1;
             }
-
+            if (cutsceneMode)
+            {
+                moveX = 0;
+            }
             float moveY = 0;
 
             if (playerInput.IsFlyPressed && canFly)
@@ -60,7 +64,10 @@ public class Movement : MonoBehaviour
                     anim.SetBool("FastDown", true);
                 }
             }
-
+            if (cutsceneMode)
+            {
+                moveY = 0;
+            }
             if (!isFallingFast && rigidbody2D.velocity.y < -0.7 && !isSlowdown)
             {
                 anim.SetBool("SlowDown", true);
@@ -96,6 +103,10 @@ public class Movement : MonoBehaviour
     public void EnableDashing(bool enableDashing)
     {
         isDashing = enableDashing;
+    }
+    public void CutsceneMode(bool mode)
+    {
+        cutsceneMode = mode;
     }
 
 }

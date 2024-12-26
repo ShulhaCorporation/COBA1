@@ -20,14 +20,7 @@ public class CameraZoom : MonoBehaviour
         zooming = StartCoroutine(Zooming(scale, duration));
       
     }
-    private IEnumerator Zooming(float delay)
-    {
-        for(int i = 0; i<100; i++)
-        {
-            camera.orthographicSize += step;
-            yield return new WaitForSeconds(delay);
-        }
-    }
+    
 
     private IEnumerator Zooming(float targetSize, float duration)
     {

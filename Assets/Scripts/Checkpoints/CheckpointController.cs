@@ -39,7 +39,7 @@ public class CheckpointController : MonoBehaviour
         
         if (id > currentId)
         {
-            Debug.Log(position + "" + id);
+            
             currentSpawnPoint = position;
             currentId = id;
         }
