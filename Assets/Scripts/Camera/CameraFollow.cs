@@ -56,7 +56,6 @@ public class CameraFollow : MonoBehaviour
         rigidbody.velocity += distance.normalized * speed;
 
         yield return new WaitForSeconds(3.4f);
-        Debug.Log("fin");
         currentLevel = saveLevel;
     }
 }
