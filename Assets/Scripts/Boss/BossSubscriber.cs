@@ -27,6 +27,10 @@ public class BossSubscriber : MonoBehaviour
     private Rigidbody2D wall;
     [SerializeField]
     private ParticleSystem particles;
+    [SerializeField]
+    private GameObject boss;
+    [SerializeField]
+    private GameObject checkpoint;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +56,10 @@ public class BossSubscriber : MonoBehaviour
         wall.gravityScale = 1;
         yield return new WaitForSeconds(0.5f);
         particles.Play();
-        //поява боса, розморозка гравця, збереження на невидимому чекпоїнті
+        boss.SetActive(true);
+        yield return new WaitForSeconds(3);
+        movement.CutsceneMode(false);
+        checkpoint.SetActive(true);
+        //збереження на невидимому чекпоїнті
     }
 }

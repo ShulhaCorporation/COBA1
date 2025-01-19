@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossStates : MonoBehaviour
 {
+    public BossIntro intro;
     public Phase1 phase1;
     public Phase2 phase2;
     public iState currentState;
@@ -14,13 +15,15 @@ public class BossStates : MonoBehaviour
     [SerializeField]
     public List<Vector3> keyframes;
     [SerializeField]
-    public float speed1;
+    public float speed1; 
     [SerializeField]
-    public float minDelay;
+    public float minDelay; //вистріли
     [SerializeField]
-    public float maxDelay;
+    public float maxDelay; //вистріли
     [SerializeField]
     public ShootController shootController;
+    [SerializeField]
+    public float reqAltitude;
     public float phase1Ends = 110f;
     // Start is called before the first frame update
     void Start()
@@ -35,9 +38,10 @@ public class BossStates : MonoBehaviour
     }
     public void Initialize()
     {
+        intro = new BossIntro(this);
         phase1 = new Phase1(this);
         phase2 = new Phase2();
-        currentState = phase1;
+        currentState = intro;
         currentState.StartState();
     }
     public void Transition(iState state)

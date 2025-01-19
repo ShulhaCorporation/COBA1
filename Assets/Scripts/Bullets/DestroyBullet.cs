@@ -23,7 +23,7 @@ public class DestroyBullet : MonoBehaviour
     {
         
         Instantiate(particles, gameObject.transform.position, Quaternion.identity);
-        yield return new WaitForEndOfFrame();
+        yield return new WaitForSeconds(0.1f); //затримка, бо по сові не встигає наноситися удар
         Destroy(gameObject);
     }
 }
