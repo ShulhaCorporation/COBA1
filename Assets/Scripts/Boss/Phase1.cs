@@ -58,7 +58,7 @@ public class Phase1 : iState
         if (canShoot)
         {
             canShoot = false;
-            shootController.Fire(minDelay, maxDelay); //корутину не можна викликати без Monobehaviour, тому для цього є окремий клас
+            shootController.Fire(minDelay, maxDelay, bossStates.player.position); //корутину не можна викликати без Monobehaviour, тому для цього є окремий клас
         }
 
     }

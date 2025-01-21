@@ -4,16 +4,23 @@ using System.Collections.Generic;
 using System.Reflection.Emit;
 using UnityEngine;
 
-public class Timer : MonoBehaviour
+public class Timer : AResetable
 {
     [SerializeField]
+    private int time;
+    [SerializeField]
     private GameObject label;
+    [SerializeField]
+    private PlayerDeath playerDeath;
     public event Action OnTick;
-    private int seconds = 120;
+    private int seconds;
+    private Coroutine countdown;
     public void StartTime()
     {
+        seconds = time;
+        playerDeath.OnDeath += StopTimer;
         label.SetActive(true);
-        StartCoroutine(StartTimer());
+       countdown = StartCoroutine(StartTimer());
 
     }
 
@@ -30,5 +37,15 @@ public class Timer : MonoBehaviour
    public int GetSeconds()
     {
         return seconds;
+    }
+    public override void ResetItem()
+    {
+        seconds = time;
+            StopCoroutine(countdown);
+       countdown = StartCoroutine(StartTimer());
+    }
+    private void StopTimer()
+    {
+        StopCoroutine(countdown);
     }
 }

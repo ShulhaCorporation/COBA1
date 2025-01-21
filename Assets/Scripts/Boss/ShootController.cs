@@ -7,14 +7,15 @@ public class ShootController : MonoBehaviour
 {
     public event Action OnShootEnd;
     [SerializeField]
-    private GameObject bullet;
-   public void Fire(float min, float max)
+    private Bullet bullet;
+   public void Fire(float min, float max, Vector3 playerPos)
     {
-        StartCoroutine(Shoot(min, max));
+        StartCoroutine(Shoot(min, max, playerPos));
     }
-    IEnumerator Shoot(float min, float max)
+    IEnumerator Shoot(float min, float max, Vector3 playerPos)
     {
-        Instantiate(bullet, gameObject.transform.position, Quaternion.identity);
+        Bullet bulletGO = Instantiate(bullet, gameObject.transform.position, Quaternion.identity);
+        bulletGO.SetTarget(playerPos);
         yield return new WaitForSeconds(UnityEngine.Random.Range(min, max));
         OnShootEnd?.Invoke();
     }

@@ -47,6 +47,7 @@ public class BossSubscriber : MonoBehaviour
     {
         gear.StartSpinning(true);
         movement.CutsceneMode(true);
+        checkpoint.SetActive(true);
         yield return new WaitForSeconds(2);
         timer.StartTime();
         yield return new WaitForSeconds(1);
@@ -57,9 +58,9 @@ public class BossSubscriber : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         particles.Play();
         boss.SetActive(true);
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2.5f);
         movement.CutsceneMode(false);
-        checkpoint.SetActive(true);
-        //збереження на невидимому чекпоїнті
+       
+        
     }
 }

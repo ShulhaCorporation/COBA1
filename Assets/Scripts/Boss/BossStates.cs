@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossStates : MonoBehaviour
+public class BossStates : AResetable
 {
     public BossIntro intro;
     public Phase1 phase1;
@@ -24,11 +24,15 @@ public class BossStates : MonoBehaviour
     public ShootController shootController;
     [SerializeField]
     public float reqAltitude;
+    [SerializeField]
+    private Vector3 respawnPoint;
+    [SerializeField]
+    public Transform player;
     public float phase1Ends = 110f;
     // Start is called before the first frame update
     void Start()
     {
-        Initialize();  //навіщо окремий метод для ініціалізації, якщо він ніде не викликається? можна це прибрати і засунути логіку в Start()?
+        Initialize(); 
     }
 
     // Update is called once per frame
@@ -49,5 +53,10 @@ public class BossStates : MonoBehaviour
         currentState.EndState();
         currentState = state;
         currentState.StartState();
+    }
+    public override void ResetItem()
+    {
+        currentState = phase1;
+        transform.position = respawnPoint;
     }
 }

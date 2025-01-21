@@ -17,13 +17,19 @@ public class DestroyBullet : MonoBehaviour
         velocity.x = new ParticleSystem.MinMaxCurve(knockback.x);
         velocity.y = new ParticleSystem.MinMaxCurve(knockback.y);
         velocity.z = new ParticleSystem.MinMaxCurve(0f);
-        StartCoroutine(Destroy());   
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            StartCoroutine(Destroy(0.1f));
+        }
+        else
+        {
+            StartCoroutine(Destroy(0f));
+        }
     }
-    IEnumerator Destroy()
+    IEnumerator Destroy(float delay)
     {
-        
+        yield return new WaitForSeconds(delay); //затримка, бо по сові не встигає наноситися удар
         Instantiate(particles, gameObject.transform.position, Quaternion.identity);
-        yield return new WaitForSeconds(0.1f); //затримка, бо по сові не встигає наноситися удар
         Destroy(gameObject);
     }
 }

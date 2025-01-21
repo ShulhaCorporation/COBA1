@@ -9,7 +9,7 @@ public class ParticlesAutokill : MonoBehaviour
     void Start()
     {
         StartCoroutine(Delete(time));
-    }
+    }                
 
     IEnumerator Delete(float time)
     {

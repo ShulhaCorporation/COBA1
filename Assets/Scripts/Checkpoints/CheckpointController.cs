@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class CheckpointController : MonoBehaviour
@@ -15,14 +16,16 @@ public class CheckpointController : MonoBehaviour
     [SerializeField]
     private List<GameObject> hearts;
     [SerializeField]
-    private List<GameObject> energyBoosters;
-    [SerializeField]
     private TriggerBreakable triggerBreakable;
+    [SerializeField]
+    private BossStates boss;
     private LifeSystem lifesystem;
     private TouchSpike touchSpike;
     private Vector3 currentSpawnPoint;
     private EnergyCount energyCount;
     private int currentId = 0;
+    private List<AResetable> currentResetables;
+
     void Start(){
         lifesystem = player.GetComponent<LifeSystem>();
         energyCount = player.GetComponent<EnergyCount>();
@@ -31,10 +34,9 @@ public class CheckpointController : MonoBehaviour
         foreach (var checkpoint in checkpoints){
             checkpoint.OnCheckpointEntered+=OnCheckpointEntered;
         }
-        
     }
 
-    private void OnCheckpointEntered(Vector3 position, int id)
+    private void OnCheckpointEntered(Vector3 position, int id, List<AResetable> resetables)
     {
         
         if (id > currentId)
@@ -42,6 +44,7 @@ public class CheckpointController : MonoBehaviour
             
             currentSpawnPoint = position;
             currentId = id;
+            currentResetables = resetables;
         }
     }
 
@@ -51,19 +54,19 @@ public class CheckpointController : MonoBehaviour
         playerTransform.position = currentSpawnPoint;
         lifesystem.SetHp(3);
         energyCount.power = 1f;
+
         foreach (var heart in hearts)
         {
             HpView hpView = heart.GetComponent<HpView>();
             hpView.Reset();
         }
-        if (energyBoosters != null)
+
+        foreach (var resetable in currentResetables)
         {
-            foreach (var booster in energyBoosters)
-            {
-                booster.SetActive(true);
-            }
+            resetable.ResetItem();
         }
-        triggerBreakable.ResetIsUsed();
+        
+       
         touchSpike.SetState(OwlState.Normal);
     }
 }

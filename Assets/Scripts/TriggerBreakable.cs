@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class TriggerBreakable : MonoBehaviour
+public class TriggerBreakable : AResetable
 {
     [SerializeField]
     private Breakable breakable;
@@ -16,9 +16,9 @@ public class TriggerBreakable : MonoBehaviour
             isUsed = true;
         }
     }
-    public void ResetIsUsed()
+    public override void ResetItem()
     {
-        Debug.Log("reset");
         isUsed = false;
+        breakable.platform.SetActive(true);
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Breakable : MonoBehaviour
 {
     [SerializeField]
-    private GameObject platform;
+    public GameObject platform;
     [SerializeField]
     private Rigidbody2D player;
    private bool allowedBreaking = false;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnergyBoost : MonoBehaviour
+public class EnergyBoost : AResetable
 {
     [SerializeField]
     private float power;
@@ -24,5 +24,9 @@ public class EnergyBoost : MonoBehaviour
             particles.Play();
             gameObject.SetActive(false);
         }
+    }
+    public override void ResetItem()
+    {
+        gameObject.SetActive(true);
     }
 }
