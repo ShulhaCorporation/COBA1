@@ -5,31 +5,28 @@ using UnityEngine;
 public class DestroyBullet : MonoBehaviour
 {
     [SerializeField]
-    private GameObject particles;
-    [SerializeField]
     private float particlesSpeed;
-    private ParticleSystem particleSystem;
+    private ParticleController particleController;
+    public void SetController(ParticleController particleController)
+    {
+        this.particleController = particleController;
+    }
      void OnCollisionEnter2D(Collision2D collision)
     {  //віддача при зіткненні частинок з об'єктом
         Vector3 knockback = collision.relativeVelocity.normalized * particlesSpeed;
-        particleSystem = particles.GetComponent<ParticleSystem>();
-        var velocity = particleSystem.velocityOverLifetime;
-        velocity.x = new ParticleSystem.MinMaxCurve(knockback.x);
-        velocity.y = new ParticleSystem.MinMaxCurve(knockback.y);
-        velocity.z = new ParticleSystem.MinMaxCurve(0f);
         if (collision.gameObject.CompareTag("Player"))
         {
-            StartCoroutine(Destroy(0.1f));
+            StartCoroutine(Destroy(0.1f, knockback));
         }
         else
         {
-            StartCoroutine(Destroy(0f));
+            StartCoroutine(Destroy(0f, knockback));
         }
     }
-    IEnumerator Destroy(float delay)
+    IEnumerator Destroy(float delay, Vector3 knockback)
     {
         yield return new WaitForSeconds(delay); //затримка, бо по сові не встигає наноситися удар
-        Instantiate(particles, gameObject.transform.position, Quaternion.identity);
+        particleController.Place(transform.position, knockback);
         Destroy(gameObject);
     }
 }
