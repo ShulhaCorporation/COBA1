@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,7 @@ public class EnergyBoost : AResetable
     [SerializeField]
     private ParticleSystem particles;
     private EnergyCount energyCount;
+    public event Action OnBoosterActivation;
     private void Start()
     {
         energyCount = player.GetComponent<EnergyCount>();
@@ -22,6 +24,7 @@ public class EnergyBoost : AResetable
            
             energyCount.AddPower(power);
             particles.Play();
+            OnBoosterActivation?.Invoke();
             gameObject.SetActive(false);
         }
     }

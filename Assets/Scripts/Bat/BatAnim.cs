@@ -18,13 +18,25 @@ public class BatAnim : MonoBehaviour
     void Update()
     {
       direct = rb.velocity;
-        if (direct.x > 0)
+        if (direct.x > 0.1f)
         {
+            anim.SetBool("IsUpDown", false);
             anim.SetFloat("direction", 1);
         }
-        else if (direct.x < 0)
+        else if (direct.x < -0.1f)
         {
+            anim.SetBool("IsUpDown", false);
             anim.SetFloat("direction", -1);
+        }
+        else if (direct.y > 0)
+        {
+            anim.SetBool("IsUpDown", true);
+            anim.SetFloat("YForce", 1f);
+        }
+        else
+        {
+            anim.SetBool("IsUpDown", true);
+            anim.SetFloat("YForce", -1f);
         }
     }
 }

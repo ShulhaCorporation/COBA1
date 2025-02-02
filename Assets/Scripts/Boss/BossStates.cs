@@ -6,6 +6,7 @@ public class BossStates : AResetable
 {
     public BossIntro intro;
     public Phase1 phase1;
+    public Transition1 transition1;
     public Phase2 phase2;
     public iState currentState;
     [SerializeField]
@@ -28,6 +29,14 @@ public class BossStates : AResetable
     private Vector3 respawnPoint;
     [SerializeField]
     public Transform player;
+    [SerializeField]
+    public GameObject boostSpawner;
+    [SerializeField]
+    public float transitionSpeed;
+    [SerializeField]
+    public TransitionWorker1 transitionManager;
+    [SerializeField]
+    public PointDetector pointDetector;
     public float phase1Ends = 110f;
     // Start is called before the first frame update
     void Start()
@@ -44,6 +53,7 @@ public class BossStates : AResetable
     {
         intro = new BossIntro(this);
         phase1 = new Phase1(this);
+        transition1 = new Transition1(this);
         phase2 = new Phase2();
         currentState = intro;
         currentState.StartState();

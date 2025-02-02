@@ -9,6 +9,7 @@ TagManager:
   - Ground
   - InstantKill
   - Destroy
+  - BossPoint
   layers:
   - Default
   - TransparentFX

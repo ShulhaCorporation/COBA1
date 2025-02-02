@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -28,7 +29,7 @@ public class Phase1 : iState
 
     public void EndState()
     {
-        Debug.Log("phase 1 ended");
+        rigidbody.velocity = Vector3.zero;
     }
 
     public void StartState()
@@ -40,6 +41,8 @@ public class Phase1 : iState
         maxDelay = bossStates.maxDelay;
         shootController = bossStates.shootController;
         shootController.OnShootEnd += ResetCanShoot;
+        bossStates.boostSpawner.SetActive(true);
+        bossStates.pointDetector.OnBossPoint += ChangePoint;
     }
 
     public void UpdateState()
@@ -47,13 +50,12 @@ public class Phase1 : iState
         
        if(bossStates.timer.GetSeconds() <= bossStates.phase1Ends)
         {
-            bossStates.Transition(bossStates.phase2);
+            bossStates.Transition(bossStates.transition1);
         }
        Vector3 distance =   keyframes[currentIndex] - bossStates.transform.position;
-        if(distance.magnitude <= 0.05f)
-        {
-            ChangePoint();
-        }
+       
+          
+       
         rigidbody.velocity = distance.normalized * speed * Time.deltaTime;
         if (canShoot)
         {
@@ -65,6 +67,7 @@ public class Phase1 : iState
     
     private void ChangePoint()
     {
+        
        if(Random.Range(0,3) == 0)
         {
             rotatesClockwise = !rotatesClockwise;

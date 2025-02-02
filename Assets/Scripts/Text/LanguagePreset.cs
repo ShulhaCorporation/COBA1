@@ -22,7 +22,8 @@ public class LanguagePreset : ScriptableObject {
          {"tutor3", "This is a checkpoint \n You will be respawned with full hp if you die after it" },
         {"tutor4", "Press S to fly down fast" },
         {"tutor5", "You need to blow up the blockage \n Find the detonator" },
-        {"tutor6", "This is an energy crystal" }
+        {"tutor6", "This is an energy crystal" },
+        {"timerLabel", "The door will open in" }
     };
 
     public Dictionary<string, string> Ukrainian = new Dictionary<string, string>(){
@@ -41,6 +42,7 @@ public class LanguagePreset : ScriptableObject {
            {"tutor3", "Ви дійшли до точки збереження \n Ви відродитесь тут після смерті з повним здоров'ям" },
         {"tutor4", "Натисніть S для швидкого ривка вниз" },
          {"tutor5", "Треба розчистити обвал \n Десь має бути детонатор" },
-         {"tutor6", "Це енергетичний кристал \n АБВГҐДЕЄЖЗИІЇЙКЛМНОПРСТУФХЦЧШЩЬЮЯ \n авбгґдеєжзиіїйклмнопрстуфхцчшщьюя" }
+         {"tutor6", "Це енергетичний кристал" },
+         {"timerLabel", "Двері відчиняться через" }
     };
     }

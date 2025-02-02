@@ -25,7 +25,7 @@ public class DisplayTiner : MonoBehaviour
             zero = "0";
         }
         time.SetText($"{minutes}:{zero}{seconds}");
-        if( seconds <= 0)
+        if( minutes <= 0 && seconds <= 0)
         {
             gameObject.SetActive( false );
         }
