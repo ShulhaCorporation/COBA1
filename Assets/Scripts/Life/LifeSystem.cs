@@ -22,8 +22,10 @@ public class LifeSystem : MonoBehaviour
     }
 
     public void AddHp(int increment)
-    { 
-        hp += increment;
+    { if (hp + increment <= 3)
+        {
+            hp += increment;
+        }
         if (hp <= 0)
         {
             playerDeath.SetIsDead(true);

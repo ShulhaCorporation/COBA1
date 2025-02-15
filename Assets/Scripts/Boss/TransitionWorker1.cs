@@ -12,7 +12,7 @@ public class TransitionWorker1 : AResetable
     [SerializeField]
     private MovingSpikes spikes;
     [SerializeField]
-    private List<GameObject> bats;
+    private List<BatController> bats;
     private List<Vector3> batPositions = new List<Vector3>();
     public event Action OnTransition1End;
     private Coroutine coroutine;
@@ -20,7 +20,7 @@ public class TransitionWorker1 : AResetable
 
     void Start()
     {
-        foreach (GameObject obj in bats)
+        foreach (BatController obj in bats)
         {
             batPositions.Add(obj.transform.position);
         }
@@ -38,9 +38,9 @@ public class TransitionWorker1 : AResetable
         yield return new WaitForSeconds(2f);
         foreach (var bat in bats)
         {
-            bat.SetActive(true);
+            bat.gameObject.SetActive(true);
         }
-        spikes.Move();
+        spikes.MoveUp(81.6f, true);
         foreach (var warning in warnings)
         {
             warning.SetActive(false);
@@ -60,7 +60,9 @@ public class TransitionWorker1 : AResetable
         }
         for (int i = 0; i < bats.Count; i++) {
             bats[i].transform.position = batPositions[i];
-            bats[i].SetActive(false);
+            
+            bats[i].gameObject.SetActive(false);
+            bats[i].DefaultPoints();
         }
         
     }

@@ -31,18 +31,24 @@ public class Transition1 : iState
     {
         if (canMove) {
             direction = bossStates.centralBlock.position - bossStates.transform.position;
+            rigidbody.velocity = direction.normalized * bossStates.transitionSpeed;
             if (direction.magnitude <= 4)
-            {
+            { 
                 canMove = false;
                 rigidbody.velocity = Vector3.zero;
                transitionManager.StartScene();
             }
        
-            rigidbody.velocity = direction.normalized * Time.deltaTime * bossStates.transitionSpeed;
+           
         }
     }
     private void ToNextPhase()
     {
         bossStates.Transition(bossStates.phase2);
+        canMove = true;
+    }
+    public void ResetCanMove()
+    {
+        canMove = true;
     }
 }

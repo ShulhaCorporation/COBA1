@@ -41,7 +41,10 @@ public class Timer : AResetable
     public override void ResetItem()
     {
         seconds = time - 9; //9 секунд - це довжина кат сцени. вони не потрібні після респавну
+        if (countdown != null)
+        {
             StopCoroutine(countdown);
+        }
        countdown = StartCoroutine(StartTimer());
     }
     private void StopTimer()

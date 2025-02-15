@@ -15,7 +15,7 @@ public class BossShard : Bullet
     }
     protected override void AnotherBulletLogic()
     {  
-       rb.angularVelocity = rotationSpeed * Time.deltaTime; 
+       rb.angularVelocity = rotationSpeed; 
     }
 
    

@@ -43,6 +43,7 @@ public class Phase1 : iState
         shootController.OnShootEnd += ResetCanShoot;
         bossStates.boostSpawner.SetActive(true);
         bossStates.pointDetector.OnBossPoint += ChangePoint;
+      
     }
 
     public void UpdateState()
@@ -52,11 +53,11 @@ public class Phase1 : iState
         {
             bossStates.Transition(bossStates.transition1);
         }
-       Vector3 distance =   keyframes[currentIndex] - bossStates.transform.position;
+       Vector3 distance = keyframes[currentIndex] - bossStates.transform.position;
        
           
        
-        rigidbody.velocity = distance.normalized * speed * Time.deltaTime;
+        rigidbody.velocity = distance.normalized * speed;
         if (canShoot)
         {
             canShoot = false;
@@ -85,23 +86,5 @@ public class Phase1 : iState
             currentIndex = keyframes.Count - 1;
         }
         
-    }
-}
-
-public class Phase2 : iState
-{
-    public void EndState()
-    {
-
-    }
-
-    public void StartState()
-    {
-
-    }
-
-    public void UpdateState()
-    {
-
     }
 }

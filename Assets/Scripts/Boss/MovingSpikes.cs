@@ -4,25 +4,41 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class MovingSpikes : AResetable
-{ private Vector3 target;
+{ 
     [SerializeField]
     private Rigidbody2D rigidbody;
     [SerializeField]
     private float speed;
+    [SerializeField]
+    private Vector3 resetPosition;
     private Coroutine coroutine;
-    void Start()
+ 
+    public void MoveUp(float goal, bool mode)
     {
-        target = transform.position + new Vector3(0, 1.32f, 0);  
-    }
-    public void Move()
-    {
-       coroutine = StartCoroutine(MoveSpikes());
-    }
-    IEnumerator MoveSpikes()
-    {
-        while(transform.position.y < 81.6f)
+        if (mode)
         {
-            rigidbody.velocity = Vector3.up * Time.deltaTime * speed;
+            coroutine = StartCoroutine(MoveSpikesUp(goal));
+        }
+        else
+        {
+            coroutine = StartCoroutine(MoveSpikesDown(goal));
+        }
+    }
+    IEnumerator MoveSpikesUp(float goal)
+    {
+        while(transform.position.y < goal)
+        {
+            rigidbody.velocity = Vector3.up * speed;
+            yield return new WaitForEndOfFrame();
+        }
+        rigidbody.velocity = Vector3.zero;
+    }
+ 
+    IEnumerator MoveSpikesDown(float goal)
+    {
+        while (transform.position.y > goal)
+        {
+            rigidbody.velocity = Vector3.down * speed;
             yield return new WaitForEndOfFrame();
         }
         rigidbody.velocity = Vector3.zero;
@@ -34,6 +50,6 @@ public class MovingSpikes : AResetable
             StopCoroutine(coroutine);
         }
         rigidbody.velocity = Vector3.zero;
-        transform.localPosition = new Vector3(101.0356f, 81.95773f, -0.7997909f);
+        transform.localPosition = resetPosition;
     }
 }

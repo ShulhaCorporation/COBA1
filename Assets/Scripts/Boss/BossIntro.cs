@@ -29,6 +29,6 @@ public class BossIntro : iState
         {
             bossStates.Transition(bossStates.phase1);
         }
-        rigidbody.velocity = Vector3.down * Time.deltaTime * speed;
+        rigidbody.velocity = Vector3.down * speed;
     }
 }

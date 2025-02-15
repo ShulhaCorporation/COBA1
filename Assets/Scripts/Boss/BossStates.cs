@@ -8,6 +8,8 @@ public class BossStates : AResetable
     public Phase1 phase1;
     public Transition1 transition1;
     public Phase2 phase2;
+    public Transition2 transition2;
+    public Phase3 phase3;
     public iState currentState;
     [SerializeField]
     public Transform centralBlock;
@@ -17,6 +19,8 @@ public class BossStates : AResetable
     public List<Vector3> keyframes;
     [SerializeField]
     public float speed1; 
+    [SerializeField] 
+    public float speed2;
     [SerializeField]
     public float minDelay; //вистріли
     [SerializeField]
@@ -24,20 +28,43 @@ public class BossStates : AResetable
     [SerializeField]
     public ShootController shootController;
     [SerializeField]
+    public ShootCountdown shootCountdown;
+    [SerializeField]
     public float reqAltitude;
     [SerializeField]
     private Vector3 respawnPoint;
+    [SerializeField] 
+    public Vector3 tran2Keyframe;
     [SerializeField]
     public Transform player;
     [SerializeField]
     public GameObject boostSpawner;
+    [SerializeField]
+    public GameObject heartSpawner;
+    [SerializeField]
+    public  MovingSpikes movingSpikes;
+    [SerializeField]
+    public MovingSpikes movingGeysers;
+    [SerializeField]
+    public BatController batHorizontal;
+    [SerializeField] 
+    public BatController batVertical;
+    [SerializeField]
+    public GeyserController geyserController;
     [SerializeField]
     public float transitionSpeed;
     [SerializeField]
     public TransitionWorker1 transitionManager;
     [SerializeField]
     public PointDetector pointDetector;
-    public float phase1Ends = 110f;
+    [SerializeField]
+    public float phase1Ends = 109;
+    [SerializeField]
+    public float phase2Ends = 97;
+    [SerializeField]
+    public float phase3Starts = 93;
+    [SerializeField]
+    public float phase3Ends = 86;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,7 +81,9 @@ public class BossStates : AResetable
         intro = new BossIntro(this);
         phase1 = new Phase1(this);
         transition1 = new Transition1(this);
-        phase2 = new Phase2();
+        phase2 = new Phase2(this);
+        transition2 = new Transition2(this);
+        phase3 = new Phase3(this);
         currentState = intro;
         currentState.StartState();
     }
@@ -68,5 +97,7 @@ public class BossStates : AResetable
     {
         currentState = phase1;
         transform.position = respawnPoint;
+        shootController.ResetDelayAfterRespawn();
+        transition1.ResetCanMove();
     }
 }

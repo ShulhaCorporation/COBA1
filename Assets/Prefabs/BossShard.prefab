@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1529055085}
   - component: {fileID: 1529055084}
   - component: {fileID: 4664562549022054042}
+  - component: {fileID: 3878318112007043086}
   m_Layer: 0
   m_Name: BossShard
   m_TagString: Deadly
@@ -100,8 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 442424e993c6378499248a36e7d64ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3500
-  rotationSpeed: 10000
+  speed: 20
+  rotationSpeed: 71
 --- !u!50 &1529055085
 Rigidbody2D:
   serializedVersion: 4
@@ -151,5 +152,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a953d9ff04517dd4f961b7bab7d491fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particles: {fileID: 4479316929626603866, guid: ff5f2e2978e63dc4f96328a4a27ebe19, type: 3}
   particlesSpeed: 10
+--- !u!114 &3878318112007043086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6276577520448693788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8eafc1812cb9f04e854f484e6f9847f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 2

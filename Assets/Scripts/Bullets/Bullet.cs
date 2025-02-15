@@ -21,7 +21,7 @@ public abstract class Bullet : MonoBehaviour
     void Update()
     {
         if (rigidbody) 
-            rigidbody.velocity = direction * speed * Time.deltaTime;
+            rigidbody.velocity = direction * speed;
         AnotherBulletLogic();
     }
     protected abstract void AnotherBulletLogic();
