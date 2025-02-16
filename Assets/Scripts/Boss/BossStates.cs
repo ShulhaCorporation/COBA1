@@ -12,51 +12,52 @@ public class BossStates : AResetable
     public Phase3 phase3;
     public iState currentState;
     [SerializeField]
-    public Transform centralBlock;
-    [SerializeField]
     public Timer timer;
     [SerializeField]
-    public List<Vector3> keyframes;
+    public ShootController shootController;
     [SerializeField]
-    public float speed1; 
-    [SerializeField] 
-    public float speed2;
+    private Vector3 respawnPoint;
+    [SerializeField]
+    public float reqAltitude;
+    [Header("Фаза 1")]
+    [SerializeField]
+    public Transform centralBlock;
+    [SerializeField]
+    public PointDetector pointDetector;
+    [SerializeField]
+    public List<Vector3> keyframes;
     [SerializeField]
     public float minDelay; //вистріли
     [SerializeField]
     public float maxDelay; //вистріли
+    [Header("Фаза 2")]
     [SerializeField]
-    public ShootController shootController;
+    public TransitionWorker1 transitionManager;
     [SerializeField]
     public ShootCountdown shootCountdown;
     [SerializeField]
-    public float reqAltitude;
+    public Transform player;
+    [Header("Кажани")]
     [SerializeField]
-    private Vector3 respawnPoint;
+    public BatController batHorizontal;
+    [SerializeField]
+    public BatController batVertical;
+    [Header("Фаза 3")]
     [SerializeField] 
     public Vector3 tran2Keyframe;
     [SerializeField]
-    public Transform player;
+    public GeyserController geyserController;
+    [Header("Спавнери")]
     [SerializeField]
     public GameObject boostSpawner;
     [SerializeField]
     public GameObject heartSpawner;
+    [Header("Рухомі пастки")]
     [SerializeField]
     public  MovingSpikes movingSpikes;
     [SerializeField]
     public MovingSpikes movingGeysers;
-    [SerializeField]
-    public BatController batHorizontal;
-    [SerializeField] 
-    public BatController batVertical;
-    [SerializeField]
-    public GeyserController geyserController;
-    [SerializeField]
-    public float transitionSpeed;
-    [SerializeField]
-    public TransitionWorker1 transitionManager;
-    [SerializeField]
-    public PointDetector pointDetector;
+    [Header("Час закінчення фаз")]
     [SerializeField]
     public float phase1Ends = 109;
     [SerializeField]
@@ -65,6 +66,13 @@ public class BossStates : AResetable
     public float phase3Starts = 93;
     [SerializeField]
     public float phase3Ends = 86;
+    [Header("Швидкості")]
+    [SerializeField]
+    public float speed1;
+    [SerializeField]
+    public float speed2;
+    [SerializeField]
+    public float transitionSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -97,7 +105,12 @@ public class BossStates : AResetable
     {
         currentState = phase1;
         transform.position = respawnPoint;
+        phase1.ResetState();
+        transition1.ResetState();
+        phase2.ResetState();
+        transition2.ResetState();
+        phase3.ResetState();
         shootController.ResetDelayAfterRespawn();
-        transition1.ResetCanMove();
+        
     }
 }

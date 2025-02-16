@@ -87,4 +87,10 @@ public class Phase1 : iState
         }
         
     }
+    public void ResetState()
+    {
+        currentIndex = 0;
+        rotatesClockwise = true;
+        canShoot = true;
+    }
 }

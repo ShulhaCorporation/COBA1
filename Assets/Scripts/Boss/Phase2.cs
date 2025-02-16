@@ -65,4 +65,8 @@ public class Phase2 : iState
     {
         miniState = MiniState.Shoot;
     }
+    public void ResetState()
+    {
+        miniState = MiniState.Fly;
+    }
 }

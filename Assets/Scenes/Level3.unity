@@ -103008,9 +103008,9 @@ MonoBehaviour:
   transitionSpeed: 9
   transitionManager: {fileID: 1778026276}
   pointDetector: {fileID: 1190811617}
-  phase1Ends: 116
-  phase2Ends: 110
-  phase3Starts: 107
+  phase1Ends: 120
+  phase2Ends: 115
+  phase3Starts: 110
   phase3Ends: 86
 --- !u!50 &1025391045
 Rigidbody2D:
@@ -103584,7 +103584,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -63.001648, y: 38}
+  m_AnchoredPosition: {x: -63.001587, y: 38}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1085906322

@@ -60,7 +60,6 @@ public class TransitionWorker1 : AResetable
         }
         for (int i = 0; i < bats.Count; i++) {
             bats[i].transform.position = batPositions[i];
-            
             bats[i].gameObject.SetActive(false);
             bats[i].DefaultPoints();
         }

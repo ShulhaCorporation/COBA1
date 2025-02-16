@@ -21,6 +21,7 @@ public class Phase3 : iState
         controller = bossStates.geyserController;
         controller.OnRandomGeyserEnd += EnableShooting;
         canShoot = true;
+        
     }
 
     public void UpdateState()
@@ -37,5 +38,10 @@ public class Phase3 : iState
     private void EnableShooting()
     {
         canShoot = true;
+    }
+    public void ResetState()
+    {
+        canShoot = true;
+        controller.ResetGeysers();
     }
 }

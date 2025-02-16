@@ -7,4 +7,5 @@ public interface iState
     public void StartState();
     public void UpdateState();
     public void EndState();
+    public void ResetState();
 }

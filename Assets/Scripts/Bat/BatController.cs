@@ -5,7 +5,7 @@ public abstract class BatController : MonoBehaviour
 {
     [SerializeField]
     protected List<Vector3> points;
-    private List<Vector3> defaultPoints;
+    private List<Vector3> defaultPoints = new List<Vector3>();
     protected int index;
     [SerializeField]
     private float speed;

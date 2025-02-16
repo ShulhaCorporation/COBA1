@@ -31,4 +31,8 @@ public class BossIntro : iState
         }
         rigidbody.velocity = Vector3.down * speed;
     }
+    public void ResetState()
+    {
+        //the great nifiga
+    }
 }

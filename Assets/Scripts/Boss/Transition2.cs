@@ -9,7 +9,7 @@ public class Transition2 : iState
     private bool canMove = true;
     private List<Vector3> batHorPoints= new List<Vector3>()
     {
-        new Vector3(144, 87.11f, 0)
+        new Vector3(144, 87.11f, 0) 
     };
     private List<Vector3> batVertPoints = new List<Vector3>()
     {
@@ -33,6 +33,7 @@ public class Transition2 : iState
         direction = bossStates.tran2Keyframe - bossStates.transform.position;
         direction = direction.normalized;
         rigidbody = bossStates.GetComponent<Rigidbody2D>();
+        
     }
 
     public void UpdateState()
@@ -51,5 +52,8 @@ public class Transition2 : iState
             }
         }
     }
-
+    public void ResetState()
+    {
+        canMove = true;
+    }
 }

@@ -51,6 +51,6 @@ public class GeyserSwitching : MonoBehaviour
     {
         StopAllCoroutines();
         warning.SetActive(false);
-        transform.localScale = Vector3.zero;
+        transform.localScale = new Vector3(0.2f, 0 , 0);
     }
 }

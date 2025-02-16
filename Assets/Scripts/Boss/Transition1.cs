@@ -47,7 +47,7 @@ public class Transition1 : iState
         bossStates.Transition(bossStates.phase2);
         canMove = true;
     }
-    public void ResetCanMove()
+    public void ResetState()
     {
         canMove = true;
     }

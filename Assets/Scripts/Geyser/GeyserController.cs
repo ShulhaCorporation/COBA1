@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GeyserController : AResetable
+public class GeyserController : MonoBehaviour
 {
     [SerializeField]
     private List<GeyserSwitching> geysers;
@@ -58,10 +58,10 @@ public class GeyserController : AResetable
         yield return new WaitForSeconds(betweenShots);
         OnRandomGeyserEnd?.Invoke();
     }
-    public override void ResetItem()
+    public void ResetGeysers()
     {
         StopAllCoroutines();
-        foreach(var geyser in geysers)
+        foreach (var geyser in geysers)
         {
             geyser.InstantOff();
         }
@@ -70,6 +70,10 @@ public class GeyserController : AResetable
         foreach (var geyser in geysers)
         {
             randomGeysers.Add(geyser);
+        }
+        foreach (var geyser in geysers)
+        {
+            geyser.InstantOff();
         }
     }
 }
