@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class BoostSpawner : MonoBehaviour
+public class BoostSpawner : AResetable
 {
     private IBooster booster;
     [SerializeField]
@@ -16,8 +16,12 @@ public class BoostSpawner : MonoBehaviour
     private Vector3 leftDown;
     [SerializeField]
     private Vector3 rightUp;
+    private Vector3 defaultLD;
+    private Vector3 defaultRU;
     void Start()
     {
+        defaultLD = leftDown;
+        defaultRU = rightUp;
         if (gameObj.GetComponent<EnergyBoost>() != null)
         {
             booster = gameObj.GetComponent<EnergyBoost>();
@@ -40,5 +44,15 @@ public class BoostSpawner : MonoBehaviour
         booster.SetPosition(spawnpoint);
         particles.transform.position = spawnpoint;
         booster.SetActive(true);
+    }
+    public void SetSpawnArea(Vector3 leftDown, Vector3 rightUp)
+    {
+        this.leftDown = leftDown;
+        this.rightUp = rightUp;
+    }
+    public override void ResetItem()
+    {
+        this.leftDown = defaultLD;
+        this.rightUp = defaultRU;
     }
 }

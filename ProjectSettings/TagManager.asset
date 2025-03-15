@@ -10,6 +10,7 @@ TagManager:
   - InstantKill
   - Destroy
   - BossPoint
+  - Cart
   layers:
   - Default
   - TransparentFX

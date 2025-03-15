@@ -10,11 +10,16 @@ public class BossStates : AResetable
     public Phase2 phase2;
     public Transition2 transition2;
     public Phase3 phase3;
+    public Transition3 transition3;
+    public Phase4 phase4;
+    public Phase5 phase5;
     public iState currentState;
     [SerializeField]
     public Timer timer;
     [SerializeField]
     public ShootController shootController;
+    [SerializeField]
+    public Delayer delayer;
     [SerializeField]
     private Vector3 respawnPoint;
     [SerializeField]
@@ -47,6 +52,8 @@ public class BossStates : AResetable
     public Vector3 tran2Keyframe;
     [SerializeField]
     public GeyserController geyserController;
+    [SerializeField]
+    public Cart cart;
     [Header("Спавнери")]
     [SerializeField]
     public GameObject boostSpawner;
@@ -65,7 +72,9 @@ public class BossStates : AResetable
     [SerializeField]
     public float phase3Starts = 93;
     [SerializeField]
-    public float phase3Ends = 86;
+    public float phase3Ends = 81;
+    [SerializeField]
+    public float phase5Ends;
     [Header("Швидкості")]
     [SerializeField]
     public float speed1;
@@ -92,6 +101,9 @@ public class BossStates : AResetable
         phase2 = new Phase2(this);
         transition2 = new Transition2(this);
         phase3 = new Phase3(this);
+        transition3 = new Transition3(this);
+        phase4 = new Phase4(this);
+        phase5 = new Phase5(this);
         currentState = intro;
         currentState.StartState();
     }
@@ -110,6 +122,8 @@ public class BossStates : AResetable
         phase2.ResetState();
         transition2.ResetState();
         phase3.ResetState();
+        phase4.ResetState();
+        phase5.ResetState();
         shootController.ResetDelayAfterRespawn();
         
     }

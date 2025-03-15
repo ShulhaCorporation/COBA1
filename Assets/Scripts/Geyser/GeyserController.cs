@@ -10,12 +10,13 @@ public class GeyserController : MonoBehaviour
     [SerializeField]
     private int activateAtOnce = 4;
     [SerializeField]
-    private float shootLength = 1.75f; // 0.75 cekyHD D/\9 nonepeD)|(eHH9, 1 D/\9 BucTpi/\y
+    private float shootLength = 1.65f; // 0.65 cekyHD D/\9 nonepeD)|(eHH9, 1 D/\9 BucTpi/\y
     [SerializeField]
     private float betweenShots = 0.5f;
     private List<GeyserSwitching> randomGeysers = new List<GeyserSwitching>();
     private List<GeyserSwitching> shuffleMemory = new List<GeyserSwitching>();
     public event Action OnRandomGeyserEnd;
+    public event Action OnAllGeysersEnd;
     void Start()
     {
         foreach (var geyser in geysers)
@@ -75,5 +76,23 @@ public class GeyserController : MonoBehaviour
         {
             geyser.InstantOff();
         }
+    }
+
+    public void ActivateAll(float duration)
+    {
+        StartCoroutine(EnableAll(duration));
+    }
+    IEnumerator EnableAll(float duration)
+    {
+        foreach (var geyser in geysers)
+        {
+            geyser.Switch(true);
+        }
+        yield return new WaitForSeconds(duration);
+        foreach (var geyser in geysers)
+        {
+            geyser.Switch(false);
+        }
+        OnAllGeysersEnd?.Invoke();
     }
 }
