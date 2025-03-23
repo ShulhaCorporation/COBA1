@@ -39,6 +39,12 @@ public class Cart : AResetable
         Vector3 direction = new Vector3(pointX - transform.position.x, 0, 0).normalized;
         StartCoroutine(Move(direction, pointX, eventDelay));
     }
+    public void MoveTo(Vector3 position)
+    {
+        Vector3 direction = (position - transform.position).normalized;
+        StopAllCoroutines();
+        StartCoroutine(Move(direction, position.x, 0f));
+    }
     IEnumerator Move(Vector3 direction, float pointX, float eventDelay)
     {
         animator.SetBool("moving", true);
@@ -68,6 +74,7 @@ public class Cart : AResetable
     public override void ResetItem()
     {
         StopAllCoroutines();
+        rigidbody.velocity = Vector3.zero;
         banner.SetActive(false);
         animator.SetBool("moving", false);
         transform.position = new Vector3(defaultX, transform.position.y, 0);

@@ -33,7 +33,7 @@ public class BoostSpawner : AResetable
         booster.OnBoosterActivation += PlaceBooster;
         StartCoroutine(Place(spawnInterval));
     }
-    private void PlaceBooster()
+    public void PlaceBooster()
     {   
         StartCoroutine(Place(spawnInterval));
     }

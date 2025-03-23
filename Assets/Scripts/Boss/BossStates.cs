@@ -13,6 +13,7 @@ public class BossStates : AResetable
     public Transition3 transition3;
     public Phase4 phase4;
     public Phase5 phase5;
+    public BossOutro outro;
     public iState currentState;
     [SerializeField]
     public Timer timer;
@@ -54,6 +55,11 @@ public class BossStates : AResetable
     public GeyserController geyserController;
     [SerializeField]
     public Cart cart;
+    [Header("Кінцівка")]
+    [SerializeField]
+     public DoorController door;
+    [SerializeField]
+    public Vector3 lastPoint;
     [Header("Спавнери")]
     [SerializeField]
     public GameObject boostSpawner;
@@ -66,15 +72,15 @@ public class BossStates : AResetable
     public MovingSpikes movingGeysers;
     [Header("Час закінчення фаз")]
     [SerializeField]
-    public float phase1Ends = 109;
+    public float phase1Ends = 61;
     [SerializeField]
-    public float phase2Ends = 97;
+    public float phase2Ends = 49;
     [SerializeField]
-    public float phase3Starts = 93;
+    public float phase3Starts = 45;
     [SerializeField]
-    public float phase3Ends = 81;
+    public float phase3Ends = 33;
     [SerializeField]
-    public float phase5Ends;
+    public float phase5Ends = 2;
     [Header("Швидкості")]
     [SerializeField]
     public float speed1;
@@ -104,6 +110,7 @@ public class BossStates : AResetable
         transition3 = new Transition3(this);
         phase4 = new Phase4(this);
         phase5 = new Phase5(this);
+        outro = new BossOutro(this);
         currentState = intro;
         currentState.StartState();
     }

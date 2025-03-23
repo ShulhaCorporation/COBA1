@@ -16,8 +16,8 @@ public class Phase5 : iState
         geyserController = bossStates.geyserController;
         cart = bossStates.cart;
         cart.OnCartStop += EnableMoving;
-        cart.SetSpeed(3f);
-        geyserController.ActivateAll(150.65f);
+        cart.SetSpeed(2.4f);
+        geyserController.ActivateAll(10f);
         isStopped = false;
         bossStates.delayer.OnDelayEnd += EnableMoving;
         bossStates.delayer.Wait(3f);
@@ -26,7 +26,7 @@ public class Phase5 : iState
     public void UpdateState()
     {   if(bossStates.timer.GetSeconds() < bossStates.phase5Ends)
         {
-            //bossStates.Transition(bossStates.outro);
+            bossStates.Transition(bossStates.outro);
         }
        else if (isStopped)
         {
@@ -37,7 +37,8 @@ public class Phase5 : iState
 
     public void EndState()
     {
-      
+      bossStates.delayer.OnDelayEnd -= EnableMoving;
+        cart.MoveTo(new Vector3(124.00f, 86.38f , 0));
     }
 
     public void ResetState()
