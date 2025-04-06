@@ -10,8 +10,12 @@ public class Geyser : MonoBehaviour
     private float inactiveTime;
     [SerializeField] 
     private float setupDelay;
+    [SerializeField] 
+    private float hitboxScaleY;
+    [SerializeField] 
+    private float hitboxSpeed;
     [SerializeField]
-    private GameObject steam;
+    private SteamHitbox hitbox;
     [SerializeField]
     private GeyserParticles geyserParticles;
     void Start()
@@ -23,9 +27,9 @@ public class Geyser : MonoBehaviour
     {
         while (true)
         {   geyserParticles.StopParticles();
-            steam.SetActive(false);
+            hitbox.Switch(hitboxScaleY, hitboxSpeed, false);
             yield return new WaitForSeconds(inactiveTime);
-            steam.SetActive(true);
+            hitbox.Switch(hitboxScaleY, hitboxSpeed, true);
             geyserParticles.PlayParticles();
             yield return new WaitForSeconds(activeTime);
         }

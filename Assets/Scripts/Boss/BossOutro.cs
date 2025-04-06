@@ -20,14 +20,14 @@ public class BossOutro : iState
 
     public void UpdateState()
     {
-        if (bossStates.timer.GetSeconds() <= 0 && canUpdate)
+        if (bossStates.timer.GetSeconds() <= 26 && canUpdate)
         {
             rigidbody.velocity = Vector3.zero;
             canUpdate = false;
             bossStates.door.Open();
         }
         else if (canUpdate){
-            rigidbody.velocity = (bossStates.player.position - bossStates.transform.position).normalized * bossStates.speed1;  
+            rigidbody.velocity = (bossStates.player.position - bossStates.transform.position).normalized * bossStates.speed2;  
         }
     }
 

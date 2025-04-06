@@ -26,6 +26,7 @@ public class MovingSpikes : AResetable
     }
     IEnumerator MoveSpikesUp(float goal)
     {
+       
         while(transform.position.y < goal)
         {
             rigidbody.velocity = Vector3.up * speed;
@@ -35,13 +36,15 @@ public class MovingSpikes : AResetable
     }
  
     IEnumerator MoveSpikesDown(float goal)
-    {
+    { 
         while (transform.position.y > goal)
         {
             rigidbody.velocity = Vector3.down * speed;
+            Debug.Log(transform.position.y);
             yield return new WaitForEndOfFrame();
         }
         rigidbody.velocity = Vector3.zero;
+        Debug.Log("...-.-");
     }
 
     public override void ResetItem()
