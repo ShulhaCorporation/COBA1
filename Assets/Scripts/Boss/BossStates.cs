@@ -59,6 +59,8 @@ public class BossStates : AResetable
     [SerializeField]
      public DoorController door;
     [SerializeField]
+    public LightController light;
+    [SerializeField]
     public Vector3 lastPoint;
     [Header("Спавнери")]
     [SerializeField]

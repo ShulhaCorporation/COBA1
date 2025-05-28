@@ -25,6 +25,7 @@ public class BossOutro : iState
             rigidbody.velocity = Vector3.zero;
             canUpdate = false;
             bossStates.door.Open();
+            bossStates.light.TurnOn();
         }
         else if (canUpdate){
             rigidbody.velocity = (bossStates.player.position - bossStates.transform.position).normalized * bossStates.speed2;  
