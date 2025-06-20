@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
 public class LightController : MonoBehaviour
 {
-    [SerializeField]
+    [SerializeField]    //для босса кажана
     private float intensity; //0.7f
     [SerializeField]
-    private float speed;  //0.7f
+    private float speed;  //0.7f 
     [SerializeField] 
     private float angleSpeed; //18f
     [SerializeField] 
@@ -17,11 +18,27 @@ public class LightController : MonoBehaviour
     private float outerAngle; //79.4f
     [SerializeField]
     private Light2D light;
+    private Coroutine lightOn;
+    private Coroutine lightOff;
     public void TurnOn()
     {    
        StartCoroutine(LightOn());   
        StartCoroutine(OpenInnerAngle());
        StartCoroutine(OpenOuterAngle());
+    }
+    public void Explode()
+    {   if (lightOff != null)
+        {
+            StopCoroutine(lightOff);
+        }
+        lightOn = StartCoroutine(LightOn());
+    }
+    public void TurnOff()
+    {    if (lightOn != null)
+        {
+            StopCoroutine(lightOn);
+        }
+        lightOff = StartCoroutine(LightOff());
     }
     IEnumerator LightOn()
     {
@@ -31,7 +48,17 @@ public class LightController : MonoBehaviour
             light.intensity += speed * Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
-       
+
+    }
+    IEnumerator LightOff()
+    {
+
+        while (light.intensity > 0)
+        {
+            light.intensity -= speed * Time.deltaTime;
+            yield return new WaitForEndOfFrame();
+        }
+
     }
     IEnumerator OpenInnerAngle()
     {
