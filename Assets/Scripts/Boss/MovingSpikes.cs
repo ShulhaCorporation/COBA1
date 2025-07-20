@@ -40,11 +40,9 @@ public class MovingSpikes : AResetable
         while (transform.position.y > goal)
         {
             rigidbody.velocity = Vector3.down * speed;
-            Debug.Log(transform.position.y);
             yield return new WaitForEndOfFrame();
         }
         rigidbody.velocity = Vector3.zero;
-        Debug.Log("...-.-");
     }
 
     public override void ResetItem()

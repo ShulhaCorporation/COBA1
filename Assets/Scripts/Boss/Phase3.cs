@@ -7,6 +7,7 @@ public class Phase3 : iState
     private GeyserController controller;
     private bool canShoot = true;
     private BoostSpawner spawner;
+    private HeadAnim headAnim; 
     public Phase3(BossStates bossStates)
     {
         this.bossStates = bossStates;
@@ -19,6 +20,7 @@ public class Phase3 : iState
 
     public void StartState()
     {
+        headAnim = bossStates.headAnim;
         controller = bossStates.geyserController;
         controller.OnRandomGeyserEnd += EnableShooting;
         canShoot = true;
@@ -36,6 +38,7 @@ public class Phase3 : iState
         {
             canShoot = false;
             controller.ActivateRandom();
+            headAnim.TalkForSec(0.65f);
         }
     }
     private void EnableShooting()

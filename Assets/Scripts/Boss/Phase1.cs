@@ -17,6 +17,7 @@ public class Phase1 : iState
     private float minDelay;
     private float maxDelay;
     private ShootController shootController;
+    private HeadAnim head;
     public Phase1(BossStates bossStates)
     {
         this.bossStates = bossStates;
@@ -37,6 +38,7 @@ public class Phase1 : iState
         rigidbody = bossStates.gameObject.GetComponent<Rigidbody2D>();
         keyframes = bossStates.keyframes;
         speed = bossStates.speed1;
+        head = bossStates.headAnim;
         minDelay = bossStates.minDelay;
         maxDelay = bossStates.maxDelay;
         shootController = bossStates.shootController;
@@ -60,9 +62,10 @@ public class Phase1 : iState
         rigidbody.velocity = distance.normalized * speed;
         if (canShoot)
         {
+             head.OpenForSec(0.5f);
             canShoot = false;
             shootController.Fire(minDelay, maxDelay, bossStates.player.position); //корутину не можна викликати без Monobehaviour, тому для цього є окремий клас
-        }
+                  }
 
     }
     
@@ -92,5 +95,7 @@ public class Phase1 : iState
         currentIndex = 0;
         rotatesClockwise = true;
         canShoot = true;
+ shootController.ResetDelayAfterRespawn();
+
     }
 }

@@ -4837,15 +4837,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2081801194232532521, guid: b367e54ad4a86b3478af61c3e782aaad, type: 3}
       propertyPath: m_Color.b
-      value: 0.14901961
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2081801194232532521, guid: b367e54ad4a86b3478af61c3e782aaad, type: 3}
       propertyPath: m_Color.g
-      value: 0.16862746
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2081801194232532521, guid: b367e54ad4a86b3478af61c3e782aaad, type: 3}
       propertyPath: m_Color.r
-      value: 0.21960786
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6578431775069678643, guid: b367e54ad4a86b3478af61c3e782aaad, type: 3}
       propertyPath: m_Layer
@@ -108093,7 +108093,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 28.000854, y: -8.000305}
+  m_AnchoredPosition: {x: 28.00061, y: -8.000427}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &957148845
@@ -109235,6 +109235,7 @@ GameObject:
   - component: {fileID: 1025391047}
   - component: {fileID: 1025391048}
   - component: {fileID: 1025391049}
+  - component: {fileID: 1025391050}
   m_Layer: 0
   m_Name: BatBoss
   m_TagString: Deadly
@@ -109323,6 +109324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ec861d56c7ce1046a586c42741afb84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  headAnim: {fileID: 1405501006}
   timer: {fileID: 1935019213}
   shootController: {fileID: 1025391047}
   delayer: {fileID: 1025391048}
@@ -109352,11 +109354,11 @@ MonoBehaviour:
   heartSpawner: {fileID: 717516672}
   movingSpikes: {fileID: 607231274}
   movingGeysers: {fileID: 1612532125}
-  phase1Ends: 70
-  phase2Ends: 67
-  phase3Starts: 62
-  phase3Ends: 59
-  phase5Ends: 28
+  phase1Ends: 61
+  phase2Ends: 49
+  phase3Starts: 45
+  phase3Ends: 33
+  phase5Ends: 2
   speed1: 6
   speed2: 3
   transitionSpeed: 9
@@ -109421,6 +109423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 6276577520448693788, guid: afd81f4e124cd1541bdb69021c259951, type: 3}
   controller: {fileID: 707418525}
+  head: {fileID: 1405501003}
 --- !u!114 &1025391048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -109454,6 +109457,21 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1025391050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025391041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d08ec762c5d99f4ca5cc8464413981b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  head: {fileID: 1405501005}
+  body: {fileID: 1025391049}
+  rigidbody: {fileID: 1025391045}
 --- !u!1 &1027313497
 GameObject:
   m_ObjectHideFlags: 0
@@ -110263,7 +110281,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -63.00183, y: 38}
+  m_AnchoredPosition: {x: -63.001953, y: 38}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1085906322
@@ -114464,6 +114482,7 @@ GameObject:
   - component: {fileID: 1405501003}
   - component: {fileID: 1405501005}
   - component: {fileID: 1405501004}
+  - component: {fileID: 1405501006}
   m_Layer: 0
   m_Name: Head
   m_TagString: Untagged
@@ -114559,6 +114578,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1405501006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405501002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac38e7744fa94c34f88b416f8ed8ab80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 1405501005}
 --- !u!1 &1422107366
 GameObject:
   m_ObjectHideFlags: 0

@@ -20,6 +20,7 @@ public class Phase4 : iState
     private BoostSpawner heartSpawner;
     private const int attacks = 5;
     private int attacksPlayed = 0;
+    private bool bossCanMove = true;
     public Phase4(BossStates bossStates)
     {
         this.bossStates = bossStates;
@@ -44,7 +45,14 @@ public class Phase4 : iState
     }
 
     public void UpdateState()
-    {    rigidbody.velocity = new Vector3(cart.transform.position.x - bossStates.transform.position.x ,0 , 0).normalized * speed;
+    {   if (bossCanMove)
+        {
+            rigidbody.velocity = new Vector3(cart.transform.position.x - bossStates.transform.position.x, 0, 0).normalized * speed;
+        }
+        else { 
+             rigidbody.velocity = new Vector3(0, 0.0001f, 0); //забезпечує анімацію польоту вгору. Коли немає системи bossCanMove, босс швидко теліпається між анімаціями "ліворуч" і "праворуч"
+ 
+        }
         if (attacksPlayed >= attacks)
         {
             rigidbody.velocity = Vector3.zero;
@@ -74,14 +82,16 @@ public class Phase4 : iState
     {
         attacksPlayed = 0;
         miniState = Phase4State.CanMove;
-     
+        bossCanMove = true;
     }
     private void EnableShooting() {
         miniState = Phase4State.CanShoot;
+        bossCanMove = false;
     }
     private void EnableMoving()
     {
         attacksPlayed++;
         miniState = Phase4State.CanMove;
+        bossCanMove = true;
     }
 }

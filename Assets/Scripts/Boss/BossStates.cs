@@ -16,6 +16,8 @@ public class BossStates : AResetable
     public BossOutro outro;
     public iState currentState;
     [SerializeField]
+    public HeadAnim headAnim;
+   [SerializeField]
     public Timer timer;
     [SerializeField]
     public ShootController shootController;

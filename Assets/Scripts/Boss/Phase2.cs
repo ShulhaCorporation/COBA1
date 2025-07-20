@@ -16,6 +16,7 @@ public class Phase2 : iState
     private BoostSpawner heartBoostSpawner;
     private MiniState miniState = MiniState.Fly;
     private ShootCountdown countdown;
+    private HeadAnim head;
     private float speed;
     public Phase2(BossStates bossStates)
     {
@@ -31,6 +32,7 @@ public class Phase2 : iState
     public void StartState()
     {
       rigidbody = bossStates.GetComponent<Rigidbody2D>();
+        head = bossStates.headAnim;
         countdown = bossStates.shootCountdown;
         speed = bossStates.speed2;
         bossStates.heartSpawner.SetActive(true);
@@ -66,6 +68,7 @@ public class Phase2 : iState
     }
     private void SwitchToShoot()
     {
+        head.OpenForSec(0.5f);
         miniState = MiniState.Shoot;
     }
     public void ResetState()
